@@ -91,6 +91,7 @@ function bcDamage(amount, spec) {
   return {
     target: spec,
     aiHint: 'harm',
+    aiAmount: amount, // lets the AI recognise kill targets
     battlecry({ state, self, target }) {
       if (target) P.dealDamage(state, target, amount, selfRef(self));
     },
@@ -140,6 +141,7 @@ function bcDestroy(spec) {
   return {
     target: spec,
     aiHint: 'harm',
+    aiAmount: 99, // outright removal
     battlecry({ state, target }) {
       if (target) P.destroyMinion(state, target);
     },
@@ -353,6 +355,7 @@ defineCard('vrock', {
 defineCard('glabrezu', {
   target: ANY_MINION,
   aiHint: 'harm',
+  aiAmount: 99,
   battlecry({ state, player, target }) {
     if (!target) return;
     P.destroyMinion(state, target);
@@ -430,6 +433,7 @@ defineCard('djinni', bcDraw(2));
 defineCard('marid', {
   target: ENEMY_MINION,
   aiHint: 'harm',
+  aiAmount: 3,
   battlecry({ state, self, target }) {
     if (!target) return;
     P.freezeMinion(state, target, 1);
@@ -731,6 +735,7 @@ defineCard('purple_worm', {
 defineCard('remorhaz', {
   target: ANY_MINION,
   aiHint: 'harm',
+  aiAmount: 3,
   battlecry({ state, self, target }) {
     if (!target) return;
     P.dealDamage(state, target, 3, selfRef(self));
@@ -750,6 +755,7 @@ defineCard('tarrasque', {
 defineCard('kraken', {
   target: ENEMY_MINION,
   aiHint: 'harm',
+  aiAmount: 99,
   battlecry({ state, player, self, target }) {
     if (target) P.destroyMinion(state, target);
     P.dealDamage(state, P.heroRef(P.otherPlayer(player)), 4, selfRef(self));
@@ -844,6 +850,7 @@ function bcRallyOthers(atk) {
 defineCard('spark_bolt', spell({
   target: ANY_CHAR,
   aiHint: 'harm',
+  aiAmount: 2,
   run({ state, target }) {
     P.dealDamage(state, target, 2);
   },
@@ -857,6 +864,7 @@ defineCard('magic_missile', spell({
 defineCard('firebolt', spell({
   target: ANY_MINION,
   aiHint: 'harm',
+  aiAmount: 3,
   run({ state, target }) {
     P.dealDamage(state, target, 3);
   },
@@ -864,6 +872,7 @@ defineCard('firebolt', spell({
 defineCard('fireball', spell({
   target: ANY_CHAR,
   aiHint: 'harm',
+  aiAmount: 5,
   run({ state, target }) {
     P.dealDamage(state, target, 5);
   },
@@ -898,6 +907,7 @@ defineCard('cone_cold', spell({
 defineCard('disintegrate', spell({
   target: ANY_MINION,
   aiHint: 'harm',
+  aiAmount: 99,
   run({ state, target }) {
     P.destroyMinion(state, target);
   },
@@ -905,6 +915,7 @@ defineCard('disintegrate', spell({
 defineCard('polymorph', spell({
   target: ANY_MINION,
   aiHint: 'harm',
+  aiAmount: 99,
   run({ state, target }) {
     P.transformMinion(state, target, 't_sheep');
   },
@@ -926,6 +937,7 @@ defineCard('hold_monster', spell({
 defineCard('turn_undead', spell({
   target: ANY_MINION,
   aiHint: 'harm',
+  aiAmount: 4,
   run({ state, player, target }) {
     const m = P.findMinion(state, target);
     if (!m) return;
@@ -939,6 +951,7 @@ defineCard('turn_undead', spell({
 defineCard('counterspell', spell({
   target: ANY_MINION,
   aiHint: 'harm',
+  aiAmount: 2,
   run({ state, target }) {
     P.silenceMinion(state, target);
     P.dealDamage(state, target, 2);
@@ -947,6 +960,7 @@ defineCard('counterspell', spell({
 defineCard('power_word_kill', spell({
   target: withFilter(ANY_MINION, (s, m) => m.atk >= 5),
   aiHint: 'harm',
+  aiAmount: 99,
   run({ state, target }) {
     P.destroyMinion(state, target);
   },
@@ -1103,6 +1117,7 @@ defineCard('meld', spell({
 defineCard('dominate', spell({
   target: ENEMY_MINION,
   aiHint: 'harm',
+  aiAmount: 99,
   run({ state, player, target }) {
     P.takeControl(state, target, player);
   },
