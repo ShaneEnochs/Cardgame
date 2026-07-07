@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forgebound — Duel of Gears</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#101d19;
+    --bg-panel:#1a2b25;
+    --bg-panel-light:#233b32;
+    --copper:#b9713f;
+    --copper-light:#dd9a60;
+    --patina:#4f8f7a;
+    --patina-light:#79c2a8;
+    --parchment:#ece2cf;
+    --parchment-dim:#d3c4a3;
+    --ink:#241f18;
+    --danger:#b64a3f;
+    --danger-light:#e07767;
+    --gold:#e0b45c;
+    --line: rgba(236,226,207,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;padding:0;height:100%;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #1c3129 0%, transparent 60%),
+      var(--bg-deep);
+    color:var(--parchment);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+  #app{width:100%;height:100%;display:flex;flex-direction:column;position:relative;}
+
+  /* ---------- header ribbon ---------- */
+  .titlebar{
+    text-align:center;padding:8px 0 4px;
+    font-family:'Cinzel',serif;font-weight:700;letter-spacing:0.14em;
+    font-size:13px;color:var(--copper-light);text-transform:uppercase;
+    flex-shrink:0;
+  }
+  .titlebar .sub{display:block;font-family:'Inter',sans-serif;font-weight:400;letter-spacing:0.04em;
+    font-size:10.5px;color:var(--parchment-dim);text-transform:none;margin-top:2px;}
+
+  /* ---------- board ---------- */
+  .board{flex:1;display:flex;flex-direction:column;padding:2px 14px 0;min-height:0;}
+
+  .row{display:flex;align-items:center;justify-content:center;gap:14px;min-height:0;}
+  .lane{flex:1;display:flex;justify-content:center;gap:10px;padding:6px 0;min-height:118px;flex-wrap:wrap;align-content:center;}
+
+  .hero-col{display:flex;flex-direction:column;align-items:center;gap:5px;width:112px;flex-shrink:0;}
+  .hero-portrait{
+    width:64px;height:64px;border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, var(--bg-panel-light), var(--bg-panel) 70%);
+    border:3px solid var(--copper);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cinzel',serif;font-size:26px;font-weight:700;color:var(--gold);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.25), inset 0 0 14px rgba(0,0,0,0.5);
+    position:relative;transition:box-shadow .2s;
+  }
+  .hero-portrait.targetable{box-shadow:0 0 0 3px var(--danger-light), 0 0 18px 4px var(--danger-light); cursor:crosshair;}
+  .hero-hp{
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;
+    padding:2px 10px;color:var(--parchment);min-width:56px;text-align:center;
+  }
+  .hero-hp .armor{color:var(--patina-light);}
+  .hero-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;color:var(--parchment-dim);text-transform:uppercase;}
+
+  .hero-power{
+    width:38px;height:38px;border-radius:9px;border:2px solid var(--patina);
+    background:linear-gradient(160deg,var(--bg-panel-light),var(--bg-panel));
+    color:var(--patina-light);font-size:17px;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;position:relative;transition:transform .12s, box-shadow .12s;
+  }
+  .hero-power:hover:not(.disabled){transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,.4);}
+  .hero-power.used{opacity:.35;cursor:default;filter:grayscale(1);}
+  .hero-power.disabled{opacity:.35;cursor:default;}
+  .hero-power .pcost{
+    position:absolute;bottom:-6px;right:-6px;background:var(--patina);color:#0c1512;
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;
+    border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;
+  }
+
+  .center-strip{display:flex;flex-direction:column;align-items:center;justify-content:center;width:150px;flex-shrink:0;gap:6px;}
+  .mana-track{display:flex;gap:3px;flex-wrap:wrap;justify-content:center;max-width:130px;}
+  .crystal{width:13px;height:13px;clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:var(--bg-panel-light);border:1px solid var(--line);}
+  .crystal.filled{background:var(--patina-light);box-shadow:0 0 6px var(--patina-light);border-color:var(--patina-light);}
+  .mana-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--parchment-dim);}
+  .deck-count{font-size:10px;color:var(--parchment-dim);font-family:'JetBrains Mono',monospace;}
+
+  .turn-indicator{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);text-align:center;min-height:14px;
+  }
+  .end-turn{
+    font-family:'Cinzel',serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    font-size:12px;padding:9px 18px;border-radius:8px;border:2px solid var(--copper);
+    background:linear-gradient(160deg,var(--copper-light),var(--copper));color:#241205;
+    cursor:pointer;transition:transform .12s,box-shadow .12s;
+  }
+  .end-turn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.4);}
+  .end-turn:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none;}
+
+  /* ---------- minion tile ---------- */
+  .minion{
+    width:78px;height:100px;border-radius:8px;position:relative;flex-shrink:0;
+    background:linear-gradient(165deg,var(--bg-panel-light),var(--bg-panel));
+    border:2px solid var(--line);padding:5px 4px;display:flex;flex-direction:column;align-items:center;
+    justify-content:space-between;cursor:default;transition:transform .12s, box-shadow .12s, border-color .12s;
+    text-align:center;
+  }
+  .minion .mname{font-family:'Cinzel',serif;font-size:9.5px;line-height:1.15;color:var(--parchment);font-weight:700;}
+  .minion .art{width:30px;height:22px;border-radius:4px;background:radial-gradient(circle,var(--patina) 0%, var(--bg-panel) 75%);border:1px solid var(--line);}
+  .minion .stats{display:flex;justify-content:space-between;width:100%;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;}
+  .minion .atk{color:var(--gold);}
+  .minion .hp{color:var(--danger-light);}
+  .minion.mine.ready{border-color:var(--patina-light);box-shadow:0 0 8px rgba(121,194,168,0.35);cursor:pointer;}
+  .minion.mine.tapped{opacity:.55;}
+  .minion.selected-attacker{border-color:var(--gold);box-shadow:0 0 12px var(--gold);transform:translateY(-4px);}
+  .minion.targetable{border-color:var(--danger-light);box-shadow:0 0 12px var(--danger-light);cursor:crosshair;}
+  .minion.just-hurt{animation:shake .28s;}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+  .minion .sick{position:absolute;top:3px;right:4px;font-size:9px;color:var(--parchment-dim);}
+
+  /* ---------- hand ---------- */
+  .hand-wrap{flex-shrink:0;padding:8px 10px 10px;display:flex;justify-content:center;}
+  .hand{display:flex;gap:-10px;}
+  .card{
+    width:92px;height:126px;margin-left:-16px;border-radius:9px;position:relative;
+    background:linear-gradient(165deg,var(--parchment),var(--parchment-dim));
+    border:2px solid var(--copper);color:var(--ink);
+    padding:6px 6px;display:flex;flex-direction:column;align-items:center;
+    cursor:pointer;transition:transform .15s, box-shadow .15s, margin .15s;
+    box-shadow:0 3px 8px rgba(0,0,0,.4);
+  }
+  .card:first-child{margin-left:0;}
+  .card:hover{transform:translateY(-16px) scale(1.04);z-index:5;box-shadow:0 10px 18px rgba(0,0,0,.55);}
+  .card.unaffordable{filter:grayscale(.7);opacity:.6;}
+  .card.picked{transform:translateY(-20px);border-color:var(--gold);box-shadow:0 0 16px var(--gold);z-index:6;}
+  .card .ccost{
+    position:absolute;top:-8px;left:-8px;width:24px;height:24px;border-radius:50%;
+    background:var(--patina);color:#0c1512;font-family:'JetBrains Mono',monospace;font-weight:700;
+    display:flex;align-items:center;justify-content:center;font-size:12.5px;border:2px solid #0c1512;
+  }
+  .card .cname{font-family:'Cinzel',serif;font-weight:700;font-size:11px;text-align:center;margin-top:8px;line-height:1.15;}
+  .card .cart{width:100%;flex:1;margin:4px 0;border-radius:5px;
+    background:radial-gradient(circle, var(--patina) 0%, var(--parchment-dim) 78%);border:1px solid rgba(36,31,24,0.25);}
+  .card .ctext{font-size:8.6px;line-height:1.2;text-align:center;color:#3a3226;min-height:22px;}
+  .card .cstats{display:flex;justify-content:space-between;width:100%;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;padding-top:2px;}
+  .card .catk{color:#8a5a1f;}
+  .card .chp{color:#8a2c22;}
+  .card.spell{background:linear-gradient(165deg,#dde8e2,#c7d8cf);border-color:var(--patina);}
+
+  /* ---------- log ---------- */
+  .log-panel{
+    position:absolute;top:44px;right:14px;width:230px;max-height:150px;overflow-y:auto;
+    background:rgba(16,29,25,0.88);border:1px solid var(--line);border-radius:8px;padding:8px 10px;
+    font-size:11px;line-height:1.5;color:var(--parchment-dim);backdrop-filter:blur(2px);
+  }
+  .log-panel div{margin-bottom:2px;}
+  .log-panel::-webkit-scrollbar{width:5px;}
+  .log-panel::-webkit-scrollbar-thumb{background:var(--copper);border-radius:4px;}
+
+  /* ---------- overlay ---------- */
+  .overlay{
+    position:absolute;inset:0;background:rgba(8,14,12,0.88);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:18px;z-index:50;
+  }
+  .overlay h1{font-family:'Cinzel',serif;font-size:38px;letter-spacing:.06em;color:var(--gold);margin:0;text-transform:uppercase;}
+  .overlay p{color:var(--parchment-dim);max-width:420px;text-align:center;font-size:13px;line-height:1.6;}
+  .overlay button, .primary-btn{
+    font-family:'Cinzel',serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    font-size:13px;padding:12px 26px;border-radius:9px;border:2px solid var(--copper);
+    background:linear-gradient(160deg,var(--copper-light),var(--copper));color:#241205;cursor:pointer;
+  }
+  .rules{font-size:11.5px;color:var(--parchment-dim);max-width:460px;text-align:left;line-height:1.7;background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;}
+  .rules b{color:var(--copper-light);}
+
+  .toast{
+    position:absolute;top:10px;left:50%;transform:translateX(-50%);
+    background:var(--bg-panel);border:1px solid var(--copper);border-radius:20px;padding:6px 16px;
+    font-size:12px;color:var(--gold);z-index:40;opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .toast.show{opacity:1;}
+
+  .hint{position:absolute;bottom:6px;left:14px;font-size:10.5px;color:var(--parchment-dim);opacity:.75;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+(function(){
+
+/* ============ CARD DATABASE ============ */
+const CARDS = [
+  {id:'sprocket', type:'minion', name:'Rustling Sprocket', cost:1, atk:1, hp:2, text:''},
+  {id:'sentinel', type:'minion', name:'Copper Sentinel', cost:2, atk:2, hp:3, text:''},
+  {id:'familiar', type:'minion', name:"Alchemist's Familiar", cost:3, atk:2, hp:4, text:''},
+  {id:'automaton', type:'minion', name:'Brass Automaton', cost:3, atk:3, hp:3, text:''},
+  {id:'golem', type:'minion', name:'Steam Golem', cost:4, atk:4, hp:5, text:''},
+  {id:'drake', type:'minion', name:'Clockwork Drake', cost:5, atk:5, hp:5, text:''},
+  {id:'warden', type:'minion', name:'Foundry Warden', cost:6, atk:5, hp:7, text:''},
+  {id:'titan', type:'minion', name:'Gearbound Titan', cost:7, atk:7, hp:7, text:''},
+  {id:'colossus', type:'minion', name:'Verdant Colossus', cost:8, atk:8, hp:8, text:''},
+
+  {id:'spark', type:'spell', name:'Spark Bolt', cost:1, text:'Deal 2 damage to any target.',
+    needsTarget:true, effect:(g,caster,target)=>dealDamage(g,target,2)},
+  {id:'mend', type:'spell', name:'Mend', cost:2, text:"Restore 4 health to your hero.",
+    needsTarget:false, effect:(g,caster)=>{caster.hero.hp=Math.min(30,caster.hero.hp+4);}},
+  {id:'overcharge', type:'spell', name:'Overcharge', cost:3, text:'Deal 4 damage to a minion.',
+    needsTarget:true, targetMinionOnly:true, effect:(g,caster,target)=>dealDamage(g,target,4)},
+  {id:'draught', type:'spell', name:'Draught of Insight', cost:2, text:'Draw 2 cards.',
+    needsTarget:false, effect:(g,caster)=>{drawCard(g,caster);drawCard(g,caster);}},
+  {id:'blast', type:'spell', name:'Verdigris Blast', cost:4, text:"Deal 3 damage to all enemy minions.",
+    needsTarget:false, effect:(g,caster,_,opponent)=>{opponent.board.forEach(m=>dealDamage(g,m,3));}},
+];
+
+function buildDeck(){
+  let deck=[];
+  CARDS.forEach(c=>{ deck.push({...c}); deck.push({...c}); });
+  for(let i=deck.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [deck[i],deck[j]]=[deck[j],deck[i]]; }
+  return deck.map((c,idx)=>({...c, uid: c.id+'_'+idx+'_'+Math.random().toString(36).slice(2,7)}));
+}
+
+/* ============ GAME STATE ============ */
+let G = null;
+let selectedHandUid = null;
+let selectedAttackerUid = null;
+let pendingTarget = null; // {kind:'spell'|'attack', sourceUid}
+let logLines = [];
+let toastTimer = null;
+
+function newPlayer(name){
+  return {
+    name,
+    hero:{hp:30, armor:0},
+    deck: buildDeck(),
+    hand: [],
+    board: [],
+    mana: 0, maxMana: 0,
+    fatigue: 0,
+    powerUsed: false,
+  };
+}
+
+function startGame(){
+  G = {
+    player: newPlayer('You'),
+    opponent: newPlayer('The Foreman'),
+    turnCount: 1,
+    activeSide: 'player',
+    gameOver: null,
+  };
+  for(let i=0;i<3;i++){ drawCard(G,G.player); drawCard(G,G.opponent); }
+  drawCard(G,G.opponent); // opponent goes second, gets the extra card
+  G.player.maxMana = 1; G.player.mana = 1;
+  logLines = [];
+  log('The forge ignites. Your turn.');
+  selectedHandUid=null; selectedAttackerUid=null; pendingTarget=null;
+  render();
+}
+
+function log(msg){
+  logLines.push(msg);
+  if(logLines.length>40) logLines.shift();
+}
+
+function drawCard(g, side){
+  if(side.deck.length===0){
+    side.fatigue += 1;
+    side.hero.hp -= side.fatigue;
+    log(`${side.name} draws from an empty deck and takes ${side.fatigue} fatigue damage.`);
+    checkGameOver();
+    return;
+  }
+  const c = side.deck.pop();
+  if(side.hand.length>=10){
+    log(`${side.name}'s hand is full — ${c.name} burns away.`);
+    return;
+  }
+  side.hand.push(c);
+}
+
+function dealDamage(g, target, amount){
+  if(target.__isHero){
+    let dmg = amount;
+    if(target.armor>0){
+      const absorbed = Math.min(target.armor, dmg);
+      target.armor -= absorbed; dmg -= absorbed;
+    }
+    target.hp -= dmg;
+  } else {
+    target.hp -= amount;
+    target.__hurt = true;
+  }
+}
+
+function checkGameOver(){
+  if(G.gameOver) return;
+  if(G.player.hero.hp<=0){ G.gameOver='opponent'; log('Your hero has fallen. The Foreman wins.'); }
+  else if(G.opponent.hero.hp<=0){ G.gameOver='player'; log("The Foreman's hero has fallen. Victory is yours!"); }
+}
+
+function cleanupBoards(){
+  ['player','opponent'].forEach(k=>{
+    const side=G[k];
+    const dead = side.board.filter(m=>m.hp<=0);
+    dead.forEach(m=>log(`${m.name} is destroyed.`));
+    side.board = side.board.filter(m=>m.hp>0);
+  });
+}
+
+/* ============ PLAYER ACTIONS ============ */
+function canAfford(side, card){ return side.mana >= card.cost; }
+
+function selectHandCard(uid){
+  if(G.gameOver || G.activeSide!=='player') return;
+  const card = G.player.hand.find(c=>c.uid===uid);
+  if(!card) return;
+  if(!canAfford(G.player, card)){ flashToast("Not enough mana crystals."); return; }
+  selectedAttackerUid=null; pendingTarget=null;
+
+  if(card.type==='minion'){
+    playMinion(card);
+  } else {
+    if(card.needsTarget){
+      selectedHandUid = uid;
+      pendingTarget = {kind:'spell', sourceUid: uid};
+      render();
+    } else {
+      castSpell(card, null);
+    }
+  }
+}
+
+function playMinion(card){
+  if(G.player.board.length>=7){ flashToast("Your board is full."); return; }
+  G.player.mana -= card.cost;
+  G.player.hand = G.player.hand.filter(c=>c.uid!==card.uid);
+  G.player.board.push({...card, curHp:card.hp, hp:card.hp, maxHp:card.hp, ready:false, sick:true});
+  log(`You summon ${card.name}.`);
+  selectedHandUid=null; pendingTarget=null;
+  render();
+}
+
+function castSpell(card, target){
+  G.player.mana -= card.cost;
+  G.player.hand = G.player.hand.filter(c=>c.uid!==card.uid);
+  card.effect(G, G.player, target, G.opponent);
+  log(`You cast ${card.name}${target?` on ${target.__isHero?target.name:target.name}`:''}.`);
+  cleanupBoards();
+  checkGameOver();
+  selectedHandUid=null; pendingTarget=null;
+  render();
+}
+
+function cancelSelection(){
+  selectedHandUid=null; selectedAttackerUid=null; pendingTarget=null; render();
+}
+
+function clickMinion(side, minion){
+  if(G.gameOver) return;
+
+  // Resolving a pending spell target
+  if(pendingTarget && pendingTarget.kind==='spell'){
+    const card = G.player.hand.find(c=>c.uid===pendingTarget.sourceUid);
+    if(!card) return;
+    if(side!=='opponent' && card.targetMinionOnly){ /* allow either side unless restricted further */ }
+    castSpell(card, minion);
+    return;
+  }
+  // Resolving an attack target
+  if(pendingTarget && pendingTarget.kind==='attack' && side==='opponent'){
+    resolveAttack(pendingTarget.sourceUid, minion);
+    return;
+  }
+  // Selecting one of your own ready minions to attack with
+  if(side==='player' && G.activeSide==='player' && !pendingTarget){
+    if(!minion.ready){ flashToast(minion.sick? "That minion is still settling in — summoning sickness." : "That minion already attacked this turn."); return; }
+    selectedAttackerUid = minion.uid;
+    pendingTarget = {kind:'attack', sourceUid: minion.uid};
+    render();
+  }
+}
+
+function clickHero(side){
+  if(G.gameOver) return;
+  if(pendingTarget && pendingTarget.kind==='spell' && side==='player'){
+    const card = G.player.hand.find(c=>c.uid===pendingTarget.sourceUid);
+    if(card && card.targetMinionOnly) return;
+    castSpell(card, makeHeroTarget(G.player,'Your hero'));
+    return;
+  }
+  if(pendingTarget && pendingTarget.kind==='spell' && side==='opponent'){
+    const card = G.player.hand.find(c=>c.uid===pendingTarget.sourceUid);
+    if(card && card.targetMinionOnly) return;
+    castSpell(card, G.opponent.hero.__ref || makeHeroTarget(G.opponent,'The Foreman'));
+    return;
+  }
+  if(pendingTarget && pendingTarget.kind==='attack' && side==='opponent'){
+    resolveAttack(pendingTarget.sourceUid, makeHeroTarget(G.opponent,'The Foreman'));
+    return;
+  }
+}
+
+function makeHeroTarget(side, name){
+  const t = side.hero; t.__isHero=true; t.name=name; return t;
+}
+
+function resolveAttack(attackerUid, target){
+  const attacker = G.player.board.find(m=>m.uid===attackerUid);
+  if(!attacker || !attacker.ready) { pendingTarget=null; selectedAttackerUid=null; render(); return; }
+
+  if(target.__isHero){
+    dealDamage(G, target, attacker.atk);
+    log(`${attacker.name} strikes the enemy hero for ${attacker.atk}.`);
+  } else {
+    dealDamage(G, target, attacker.atk);
+    dealDamage(G, attacker, target.atk);
+    log(`${attacker.name} clashes with ${target.name} (${attacker.atk} ↔ ${target.atk}).`);
+  }
+  attacker.ready=false;
+  cleanupBoards();
+  checkGameOver();
+  pendingTarget=null; selectedAttackerUid=null;
+  render();
+}
+
+function useHeroPower(side){
+  if(G.gameOver || G.activeSide!=='player' || side!=='player') return;
+  const s = G.player;
+  if(s.powerUsed){ flashToast("Already used this turn."); return; }
+  if(s.mana<2){ flashToast("Needs 2 mana."); return; }
+  s.mana -= 2; s.powerUsed = true;
+  s.hero.armor += 3;
+  log('You channel the Tinker\'s Ward: +3 armor.');
+  render();
+}
+
+/* opponent hero power is auto-used by AI (see aiTurn) */
+
+function flashToast(msg){
+  const el = document.getElementById('toast');
+  if(!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 1600);
+}
+
+/* ============ TURN FLOW ============ */
+function endTurn(){
+  if(G.gameOver || G.activeSide!=='player') return;
+  selectedHandUid=null; selectedAttackerUid=null; pendingTarget=null;
+  G.activeSide='opponent';
+  render();
+  setTimeout(aiTurn, 650);
+}
+
+function aiTurn(){
+  if(G.gameOver) return;
+  const ai = G.opponent;
+  ai.maxMana = Math.min(10, ai.maxMana+1);
+  ai.mana = ai.maxMana;
+  ai.powerUsed = false;
+  ai.board.forEach(m=>{m.ready=true; m.sick=false;});
+  drawCard(G, ai);
+  render();
+
+  const steps = [];
+
+  // Play greedily: biggest affordable minion first, repeat.
+  function planPlays(){
+    let played = true;
+    let guard=0;
+    while(played && guard<10){
+      played=false; guard++;
+      const affordable = ai.hand.filter(c=>c.cost<=ai.mana);
+      if(affordable.length===0) break;
+      // prefer minions, biggest cost first, else cheap spell for value
+      const minions = affordable.filter(c=>c.type==='minion').sort((a,b)=>b.cost-a.cost);
+      if(minions.length>0 && ai.board.length<7){
+        steps.push({t:'play', card:minions[0]});
+        ai.mana -= minions[0].cost;
+        ai.hand = ai.hand.filter(c=>c.uid!==minions[0].uid);
+        played = true;
+        continue;
+      }
+      const spells = affordable.filter(c=>c.type==='spell');
+      if(spells.length>0){
+        steps.push({t:'spell', card:spells[0]});
+        ai.mana -= spells[0].cost;
+        ai.hand = ai.hand.filter(c=>c.uid!==spells[0].uid);
+        played = true;
+      }
+    }
+  }
+  planPlays();
+  steps.push({t:'power'});
+  // attacks
+  ai.board.forEach(m=>{ if(m.ready) steps.push({t:'attack', uid:m.uid}); });
+  steps.push({t:'end'});
+
+  runAiSteps(steps, 0);
+}
+
+function runAiSteps(steps, i){
+  if(i>=steps.length){ return; }
+  const step = steps[i];
+  const ai = G.opponent;
+
+  if(step.t==='play'){
+    const card = step.card;
+    if(card){
+      ai.board.push({...card, curHp:card.hp, hp:card.hp, maxHp:card.hp, ready:false, sick:true});
+      log(`The Foreman summons ${card.name}.`);
+      render();
+    }
+  } else if(step.t==='spell'){
+    const card = step.card;
+    if(card){
+      // simple targeting for AI spells that need none, or self-target damage spells at player hero
+      if(card.needsTarget){
+        const target = card.targetMinionOnly
+          ? (G.player.board[0] || null)
+          : makeHeroTarget(G.player,'Your hero');
+        if(target){ card.effect(G, ai, target, G.player); log(`The Foreman casts ${card.name}.`); }
+      } else {
+        card.effect(G, ai, null, G.player);
+        log(`The Foreman casts ${card.name}.`);
+      }
+      cleanupBoards(); checkGameOver(); render();
+    }
+  } else if(step.t==='power'){
+    if(!ai.powerUsed && ai.mana>=2){
+      ai.mana-=2; ai.powerUsed=true; ai.hero.armor+=3;
+      log("The Foreman channels the Tinker's Ward.");
+      render();
+    }
+  } else if(step.t==='attack'){
+    const attacker = ai.board.find(m=>m.uid===step.uid);
+    if(attacker && attacker.ready && attacker.hp>0){
+      // attack lowest-hp enemy minion if any, else face
+      const targets = G.player.board.filter(m=>m.hp>0);
+      if(targets.length>0){
+        targets.sort((a,b)=>a.hp-b.hp);
+        const t = targets[0];
+        dealDamage(G, t, attacker.atk);
+        dealDamage(G, attacker, t.atk);
+        log(`${attacker.name} clashes with ${t.name} (${attacker.atk} ↔ ${t.atk}).`);
+      } else {
+        dealDamage(G, makeHeroTarget(G.player,'Your hero'), attacker.atk);
+        log(`${attacker.name} strikes your hero for ${attacker.atk}.`);
+      }
+      attacker.ready=false;
+      cleanupBoards(); checkGameOver(); render();
+    }
+  } else if(step.t==='end'){
+    G.activeSide='player';
+    G.player.maxMana = Math.min(10, G.player.maxMana+1);
+    G.player.mana = G.player.maxMana;
+    G.player.powerUsed = false;
+    G.player.board.forEach(m=>{m.ready=true; m.sick=false;});
+    drawCard(G, G.player);
+    log('Your turn.');
+    render();
+    return;
+  }
+  setTimeout(()=>runAiSteps(steps, i+1), step.t==='attack'||step.t==='play' ? 550 : 300);
+}
+
+/* ============ RENDER ============ */
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls) e.className=cls; if(html!==undefined) e.innerHTML=html; return e; }
+
+function render(){
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+
+  if(!G){
+    app.appendChild(renderStartScreen());
+    return;
+  }
+
+  const titlebar = el('div','titlebar','Forgebound <span class="sub">Duel of Gears — a two-player card battle, you versus the Foreman</span>');
+  app.appendChild(titlebar);
+
+  const board = el('div','board');
+
+  // opponent row
+  const oppRow = el('div','row');
+  oppRow.appendChild(renderHeroCol('opponent'));
+  const oppLane = el('div','lane');
+  G.opponent.board.forEach(m=>oppLane.appendChild(renderMinion('opponent', m)));
+  oppRow.appendChild(oppLane);
+  oppRow.appendChild(el('div','hero-col')); // spacer to balance layout
+  board.appendChild(oppRow);
+
+  // center strip
+  const center = el('div','center-strip');
+  const turnInd = el('div','turn-indicator', G.gameOver ? '' : (G.activeSide==='player' ? 'Your turn' : "The Foreman's turn"));
+  center.appendChild(turnInd);
+  const endBtn = el('button','end-turn', G.activeSide==='player' ? 'End Turn' : 'Waiting…');
+  endBtn.disabled = G.activeSide!=='player' || !!G.gameOver;
+  endBtn.onclick = endTurn;
+  center.appendChild(endBtn);
+  board.appendChild(center);
+
+  // player row
+  const playerRow = el('div','row');
+  playerRow.appendChild(el('div','hero-col'));
+  const playerLane = el('div','lane');
+  G.player.board.forEach(m=>playerLane.appendChild(renderMinion('player', m)));
+  playerRow.appendChild(playerLane);
+  playerRow.appendChild(renderHeroCol('player'));
+  board.appendChild(playerRow);
+
+  app.appendChild(board);
+
+  // hand
+  const handWrap = el('div','hand-wrap');
+  const hand = el('div','hand');
+  G.player.hand.forEach(c=>hand.appendChild(renderHandCard(c)));
+  handWrap.appendChild(hand);
+  app.appendChild(handWrap);
+
+  // log
+  const logPanel = el('div','log-panel');
+  logLines.slice(-14).forEach(l=>{ const d=el('div',null,l); logPanel.appendChild(d); });
+  app.appendChild(logPanel);
+  logPanel.scrollTop = logPanel.scrollHeight;
+
+  // toast
+  const toast = el('div','toast'); toast.id='toast';
+  app.appendChild(toast);
+
+  // hint
+  const hint = el('div','hint',
+    pendingTarget ? 'Choose a target, or click the same card again to cancel.' :
+    'Click a card to play it. Click a ready minion, then a target, to attack.');
+  app.appendChild(hint);
+
+  if(pendingTarget){
+    const cancelBtn = el('div','hint','');
+    // clicking hint area cancels
+    hint.style.cursor='pointer';
+    hint.onclick = cancelSelection;
+  }
+
+  if(G.gameOver){
+    app.appendChild(renderGameOver());
+  }
+}
+
+function renderHeroCol(side){
+  const s = side==='player'? G.player : G.opponent;
+  const col = el('div','hero-col');
+  const portrait = el('div','hero-portrait', side==='player'?'⚙':'☠');
+  const isSpellTargetable = pendingTarget && pendingTarget.kind==='spell' && (()=>{
+    const card = G.player.hand.find(c=>c.uid===pendingTarget.sourceUid);
+    return card && !card.targetMinionOnly;
+  })();
+  const isAttackTargetable = pendingTarget && pendingTarget.kind==='attack' && side==='opponent';
+  if(isSpellTargetable || isAttackTargetable){
+    portrait.classList.add('targetable');
+    portrait.onclick = ()=>clickHero(side);
+  }
+  col.appendChild(portrait);
+  col.appendChild(el('div','hero-name', side==='player'?'You':'The Foreman'));
+  const hpEl = el('div','hero-hp', `${s.hero.hp}${s.hero.armor>0?` <span class="armor">+${s.hero.armor}</span>`:''}`);
+  col.appendChild(hpEl);
+
+  const power = el('div','hero-power'+(side==='player'? (G.player.powerUsed?' used':(G.activeSide!=='player'?' disabled':'')) : ' disabled'), '🛡');
+  power.appendChild((()=>{const c=el('div','pcost','2'); return c;})());
+  if(side==='player'){ power.onclick = ()=>useHeroPower('player'); }
+  col.appendChild(power);
+
+  const mana = el('div','mana-track');
+  const filled = s.mana, total = s.maxMana;
+  for(let i=0;i<Math.max(total,1);i++){
+    mana.appendChild(el('div','crystal'+(i<filled?' filled':'')));
+  }
+  col.appendChild(mana);
+  col.appendChild(el('div','mana-label', `${s.mana}/${s.maxMana} mana`));
+  col.appendChild(el('div','deck-count', `Deck: ${s.deck.length}`));
+  return col;
+}
+
+function renderMinion(side, m){
+  let cls='minion';
+  if(side==='player'){
+    cls += ' mine';
+    cls += m.ready ? ' ready' : ' tapped';
+    if(selectedAttackerUid===m.uid) cls+=' selected-attacker';
+  }
+  if(side==='opponent' && pendingTarget){
+    const kind = pendingTarget.kind;
+    if(kind==='attack') cls+=' targetable';
+    if(kind==='spell'){
+      cls+=' targetable';
+    }
+  }
+  const d = el('div', cls);
+  d.appendChild(el('div','mname', m.name));
+  d.appendChild(el('div','art'));
+  const stats = el('div','stats');
+  stats.appendChild(el('span','atk', m.atk));
+  stats.appendChild(el('span','hp', m.hp));
+  d.appendChild(stats);
+  if(m.sick && side==='player') d.appendChild(el('div','sick','z'));
+  d.onclick = ()=>clickMinion(side, m);
+  return d;
+}
+
+function renderHandCard(c){
+  const affordable = canAfford(G.player, c);
+  let cls='card'+(c.type==='spell'?' spell':'')+(affordable?'':' unaffordable')+(selectedHandUid===c.uid?' picked':'');
+  const d = el('div', cls);
+  d.appendChild(el('div','ccost', c.cost));
+  d.appendChild(el('div','cname', c.name));
+  d.appendChild(el('div','cart'));
+  if(c.type==='minion'){
+    const stats = el('div','cstats');
+    stats.appendChild(el('span','catk', c.atk));
+    stats.appendChild(el('span','chp', c.hp));
+    d.appendChild(stats);
+  } else {
+    d.appendChild(el('div','ctext', c.text));
+  }
+  d.onclick = ()=>{
+    if(selectedHandUid===c.uid){ cancelSelection(); return; }
+    selectHandCard(c.uid);
+  };
+  return d;
+}
+
+function renderStartScreen(){
+  const wrap = el('div','overlay');
+  wrap.style.position='relative'; wrap.style.inset='auto'; wrap.style.height='100%';
+  wrap.appendChild(el('h1','', 'Forgebound'));
+  wrap.appendChild(el('p','', 'A duel of brass, verdigris, and steam. Reduce the Foreman\'s hero to 0 health before he does the same to you.'));
+  const rules = el('div','rules', `
+    <b>Mana:</b> you gain one extra crystal each turn, up to 10. Cards cost mana to play.<br>
+    <b>Minions:</b> newly summoned minions have summoning sickness and can't attack until your next turn.<br>
+    <b>Combat:</b> click a ready minion of yours, then click an enemy minion or hero to attack.<br>
+    <b>Spells:</b> click a spell in hand, then click its target if it needs one.<br>
+    <b>Hero power — Tinker's Ward:</b> 2 mana, once per turn, gain 3 armor.
+  `);
+  wrap.appendChild(rules);
+  const btn = el('button','', 'Begin the Duel');
+  btn.onclick = startGame;
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+function renderGameOver(){
+  const wrap = el('div','overlay');
+  wrap.appendChild(el('h1','', G.gameOver==='player' ? 'Victory' : 'Defeat'));
+  wrap.appendChild(el('p','', G.gameOver==='player'
+    ? 'The forge falls silent. Your gears turned true.'
+    : 'The Foreman\'s constructs overwhelmed the line. The forge cools.'));
+  const btn = el('button','', 'Duel Again');
+  btn.onclick = startGame;
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+render();
+})();
+</script>
+</body>
+</html>
