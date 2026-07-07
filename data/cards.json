@@ -1,0 +1,4107 @@
+{
+  "meta": {
+    "set": "Forgebound: Bestiary",
+    "baseline": "minion (atk+hp) ~= cost*2 + 1, reduced by keyword costs",
+    "tribes": [
+      "Dragon",
+      "Undead",
+      "Fiend",
+      "Elemental",
+      "Construct",
+      "Giant",
+      "Fey",
+      "Beast",
+      "Aberration",
+      "Humanoid",
+      "Ooze",
+      "Monstrosity"
+    ],
+    "keyword_costs": {
+      "taunt": 1,
+      "charge": 2,
+      "haste": 2,
+      "ward": 2,
+      "lifesteal": 1,
+      "freeze": 1,
+      "deathrattle": 1,
+      "battlecry": 1,
+      "rush": 1
+    }
+  },
+  "hero_powers": [
+    {
+      "id": "tinkers_ward",
+      "name": "Tinker's Ward",
+      "cost": 2,
+      "text": "Gain 3 armor.",
+      "archetype": "defensive"
+    },
+    {
+      "id": "emberspark",
+      "name": "Emberspark",
+      "cost": 2,
+      "text": "Deal 1 damage to any target.",
+      "archetype": "damage"
+    },
+    {
+      "id": "mending_hand",
+      "name": "Mending Hand",
+      "cost": 2,
+      "text": "Restore 3 health to your hero.",
+      "archetype": "healing"
+    },
+    {
+      "id": "bone_call",
+      "name": "Call the Bones",
+      "cost": 2,
+      "text": "Summon a 1/1 Skeleton.",
+      "archetype": "tokens"
+    },
+    {
+      "id": "scavenge",
+      "name": "Scavenger's Eye",
+      "cost": 2,
+      "text": "Draw a card, then discard a card.",
+      "archetype": "draw"
+    },
+    {
+      "id": "forge_blade",
+      "name": "Forge a Blade",
+      "cost": 2,
+      "text": "Give a friendly minion +1/+1.",
+      "archetype": "buff"
+    },
+    {
+      "id": "warp_step",
+      "name": "Warp Step",
+      "cost": 2,
+      "text": "Give a friendly minion Rush this turn.",
+      "archetype": "tempo"
+    }
+  ],
+  "cards": [
+    {
+      "id": "red_wyrmling",
+      "type": "minion",
+      "name": "Red Dragon Wyrmling",
+      "tribe": "Dragon",
+      "cost": 2,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [],
+      "text": "A hatchling of the flame.",
+      "legendary": false
+    },
+    {
+      "id": "young_red",
+      "type": "minion",
+      "name": "Young Red Dragon",
+      "tribe": "Dragon",
+      "cost": 4,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "adult_red",
+      "type": "minion",
+      "name": "Adult Red Dragon",
+      "tribe": "Dragon",
+      "cost": 7,
+      "atk": 7,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage to all enemy minions.",
+      "legendary": false
+    },
+    {
+      "id": "ancient_red",
+      "type": "minion",
+      "name": "Ancient Red Dragon",
+      "tribe": "Dragon",
+      "cost": 9,
+      "atk": 8,
+      "hp": 8,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 4 damage split among enemies. Your Dragons cost (1) less.",
+      "legendary": true
+    },
+    {
+      "id": "ashscale_red",
+      "type": "minion",
+      "name": "Ash-Scale Red Dragon",
+      "tribe": "Dragon",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "blue_deepsea",
+      "type": "minion",
+      "name": "Deep-Sea Blue Dragon",
+      "tribe": "Dragon",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "adult_blue",
+      "type": "minion",
+      "name": "Adult Blue Dragon",
+      "tribe": "Dragon",
+      "cost": 7,
+      "atk": 6,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: freeze an enemy minion.",
+      "legendary": false
+    },
+    {
+      "id": "ancient_blue",
+      "type": "minion",
+      "name": "Ancient Blue Dragon",
+      "tribe": "Dragon",
+      "cost": 9,
+      "atk": 9,
+      "hp": 9,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: freeze all enemy minions.",
+      "legendary": true
+    },
+    {
+      "id": "green_mire",
+      "type": "minion",
+      "name": "Mire Green Dragon",
+      "tribe": "Dragon",
+      "cost": 5,
+      "atk": 5,
+      "hp": 6,
+      "keywords": [],
+      "text": "Cunning and patient.",
+      "legendary": false
+    },
+    {
+      "id": "ancient_green",
+      "type": "minion",
+      "name": "Ancient Green Dragon",
+      "tribe": "Dragon",
+      "cost": 8,
+      "atk": 7,
+      "hp": 8,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: take control of an enemy minion with 2 or less Attack.",
+      "legendary": true
+    },
+    {
+      "id": "black_cavern",
+      "type": "minion",
+      "name": "Cavern Black Dragon",
+      "tribe": "Dragon",
+      "cost": 6,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy an enemy minion damaged this turn.",
+      "legendary": false
+    },
+    {
+      "id": "white_tundra",
+      "type": "minion",
+      "name": "Tundra White Dragon",
+      "tribe": "Dragon",
+      "cost": 3,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "gold_suncrest",
+      "type": "minion",
+      "name": "Sun-Crested Gold Dragon",
+      "tribe": "Dragon",
+      "cost": 8,
+      "atk": 8,
+      "hp": 8,
+      "keywords": [
+        "battlecry",
+        "ward"
+      ],
+      "text": "Battlecry: restore 8 health to your hero. Ward.",
+      "legendary": true
+    },
+    {
+      "id": "silver_cloud",
+      "type": "minion",
+      "name": "Cloud-Piercer Silver Dragon",
+      "tribe": "Dragon",
+      "cost": 7,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: return an enemy minion to its owner's hand.",
+      "legendary": false
+    },
+    {
+      "id": "bronze_reef",
+      "type": "minion",
+      "name": "Reef Bronze Dragon",
+      "tribe": "Dragon",
+      "cost": 6,
+      "atk": 5,
+      "hp": 7,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "copper_canyon",
+      "type": "minion",
+      "name": "Canyon Copper Dragon",
+      "tribe": "Dragon",
+      "cost": 5,
+      "atk": 4,
+      "hp": 6,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "brass_desert",
+      "type": "minion",
+      "name": "Desert Brass Dragon",
+      "tribe": "Dragon",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to all enemies.",
+      "legendary": false
+    },
+    {
+      "id": "gem_amethyst",
+      "type": "minion",
+      "name": "Amethyst Gem Dragon",
+      "tribe": "Dragon",
+      "cost": 6,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: gain 3 armor and draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "gem_emerald",
+      "type": "minion",
+      "name": "Emerald Mind Dragon",
+      "tribe": "Dragon",
+      "cost": 5,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: look at the top 3 of your deck; draw one.",
+      "legendary": false
+    },
+    {
+      "id": "gem_topaz",
+      "type": "minion",
+      "name": "Topaz Storm Dragon",
+      "tribe": "Dragon",
+      "cost": 6,
+      "atk": 7,
+      "hp": 4,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "shadowfell_dragon",
+      "type": "minion",
+      "name": "Shadowfell Dragon",
+      "tribe": "Dragon",
+      "cost": 7,
+      "atk": 7,
+      "hp": 6,
+      "keywords": [
+        "lifesteal",
+        "battlecry"
+      ],
+      "text": "Lifesteal. Battlecry: deal 2 damage to the enemy hero.",
+      "legendary": false
+    },
+    {
+      "id": "faerie_dragon",
+      "type": "minion",
+      "name": "Feywild Faerie Dragon",
+      "tribe": "Dragon",
+      "cost": 2,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "clockwork_dragon",
+      "type": "minion",
+      "name": "Clockwork Mecha-Dragon",
+      "tribe": "Construct",
+      "cost": 6,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon two 2/1 Sprockets.",
+      "legendary": false
+    },
+    {
+      "id": "dracolich",
+      "type": "minion",
+      "name": "Dracolich",
+      "tribe": "Undead",
+      "cost": 8,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: return this to your hand.",
+      "legendary": true
+    },
+    {
+      "id": "vampiric_dragon",
+      "type": "minion",
+      "name": "Vampiric Blood Dragon",
+      "tribe": "Dragon",
+      "cost": 6,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "lifesteal",
+        "taunt"
+      ],
+      "text": "Lifesteal. Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "fire_drake",
+      "type": "minion",
+      "name": "Fire Drake",
+      "tribe": "Dragon",
+      "cost": 3,
+      "atk": 4,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "frost_drake",
+      "type": "minion",
+      "name": "Frost Drake",
+      "tribe": "Dragon",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "stone_drake",
+      "type": "minion",
+      "name": "Stone Drake",
+      "tribe": "Dragon",
+      "cost": 4,
+      "atk": 3,
+      "hp": 6,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "wind_drake",
+      "type": "minion",
+      "name": "Wind Drake",
+      "tribe": "Dragon",
+      "cost": 2,
+      "atk": 3,
+      "hp": 1,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "lightning_drake",
+      "type": "minion",
+      "name": "Lightning Drake",
+      "tribe": "Dragon",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to a random enemy.",
+      "legendary": false
+    },
+    {
+      "id": "guard_drake",
+      "type": "minion",
+      "name": "Guard Drake",
+      "tribe": "Dragon",
+      "cost": 3,
+      "atk": 2,
+      "hp": 5,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "venom_wyvern",
+      "type": "minion",
+      "name": "Venom-Spitting Wyvern",
+      "tribe": "Dragon",
+      "cost": 5,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy a damaged enemy minion.",
+      "legendary": false
+    },
+    {
+      "id": "iron_wyvern",
+      "type": "minion",
+      "name": "Armored Iron Wyvern",
+      "tribe": "Construct",
+      "cost": 6,
+      "atk": 5,
+      "hp": 7,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "magma_linnorm",
+      "type": "minion",
+      "name": "Magma Linnorm",
+      "tribe": "Dragon",
+      "cost": 8,
+      "atk": 8,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage to the enemy hero.",
+      "legendary": false
+    },
+    {
+      "id": "dragon_turtle",
+      "type": "minion",
+      "name": "Dragon Turtle",
+      "tribe": "Beast",
+      "cost": 7,
+      "atk": 5,
+      "hp": 9,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "abyssal_turtle",
+      "type": "minion",
+      "name": "Abyssal Dragon Turtle",
+      "tribe": "Beast",
+      "cost": 8,
+      "atk": 6,
+      "hp": 10,
+      "keywords": [
+        "taunt",
+        "ward"
+      ],
+      "text": "Taunt. Ward.",
+      "legendary": false
+    },
+    {
+      "id": "human_skeleton",
+      "type": "minion",
+      "name": "Human Skeleton",
+      "tribe": "Undead",
+      "cost": 1,
+      "atk": 2,
+      "hp": 1,
+      "keywords": [],
+      "text": "Rattling bones.",
+      "legendary": false
+    },
+    {
+      "id": "giant_skeleton",
+      "type": "minion",
+      "name": "Giant Skeleton",
+      "tribe": "Undead",
+      "cost": 5,
+      "atk": 6,
+      "hp": 4,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 2 damage to all minions.",
+      "legendary": false
+    },
+    {
+      "id": "flaming_skeleton",
+      "type": "minion",
+      "name": "Flaming Skeleton",
+      "tribe": "Undead",
+      "cost": 2,
+      "atk": 3,
+      "hp": 1,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 1 damage to a random enemy.",
+      "legendary": false
+    },
+    {
+      "id": "shambling_zombie",
+      "type": "minion",
+      "name": "Shambling Zombie",
+      "tribe": "Undead",
+      "cost": 2,
+      "atk": 2,
+      "hp": 3,
+      "keywords": [],
+      "text": "Slow but relentless.",
+      "legendary": false
+    },
+    {
+      "id": "plague_zombie",
+      "type": "minion",
+      "name": "Plague Zombie",
+      "tribe": "Undead",
+      "cost": 3,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: give a random enemy minion -1/-1.",
+      "legendary": false
+    },
+    {
+      "id": "ogre_zombie",
+      "type": "minion",
+      "name": "Ogre Zombie",
+      "tribe": "Undead",
+      "cost": 4,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [],
+      "text": "Lumbering dead.",
+      "legendary": false
+    },
+    {
+      "id": "crypt_ghoul",
+      "type": "minion",
+      "name": "Crypt Ghoul",
+      "tribe": "Undead",
+      "cost": 3,
+      "atk": 4,
+      "hp": 2,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "wight",
+      "type": "minion",
+      "name": "Wight",
+      "tribe": "Undead",
+      "cost": 4,
+      "atk": 3,
+      "hp": 4,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon a 2/2 Skeleton.",
+      "legendary": false
+    },
+    {
+      "id": "wraith",
+      "type": "minion",
+      "name": "Wraith",
+      "tribe": "Undead",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "dread_wraith",
+      "type": "minion",
+      "name": "Dread Wraith",
+      "tribe": "Undead",
+      "cost": 7,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "lifesteal",
+        "taunt"
+      ],
+      "text": "Lifesteal. Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "spectre",
+      "type": "minion",
+      "name": "Spectre",
+      "tribe": "Undead",
+      "cost": 3,
+      "atk": 4,
+      "hp": 1,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "banshee",
+      "type": "minion",
+      "name": "Banshee",
+      "tribe": "Undead",
+      "cost": 4,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give an enemy minion -3 Attack this turn.",
+      "legendary": false
+    },
+    {
+      "id": "wailing_banshee",
+      "type": "minion",
+      "name": "Wailing Banshee",
+      "tribe": "Undead",
+      "cost": 6,
+      "atk": 4,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to all enemy minions and silence a minion.",
+      "legendary": false
+    },
+    {
+      "id": "mummy",
+      "type": "minion",
+      "name": "Mummy",
+      "tribe": "Undead",
+      "cost": 4,
+      "atk": 3,
+      "hp": 5,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: give a random friendly minion +2/+2.",
+      "legendary": false
+    },
+    {
+      "id": "mummy_lord",
+      "type": "minion",
+      "name": "Mummy Lord",
+      "tribe": "Undead",
+      "cost": 7,
+      "atk": 5,
+      "hp": 6,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon two 3/3 Mummies.",
+      "legendary": true
+    },
+    {
+      "id": "vampire_spawn",
+      "type": "minion",
+      "name": "Vampire Spawn",
+      "tribe": "Undead",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "true_vampire",
+      "type": "minion",
+      "name": "True Vampire",
+      "tribe": "Undead",
+      "cost": 6,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "lifesteal",
+        "battlecry"
+      ],
+      "text": "Lifesteal. Battlecry: restore 3 health to your hero.",
+      "legendary": false
+    },
+    {
+      "id": "nosferatu",
+      "type": "minion",
+      "name": "Nosferatu",
+      "tribe": "Undead",
+      "cost": 8,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal. Whenever this kills a minion, gain +2/+2.",
+      "legendary": true
+    },
+    {
+      "id": "lich",
+      "type": "minion",
+      "name": "Lich",
+      "tribe": "Undead",
+      "cost": 8,
+      "atk": 6,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage to all enemy minions and draw a card.",
+      "legendary": true
+    },
+    {
+      "id": "demilich",
+      "type": "minion",
+      "name": "Demilich",
+      "tribe": "Undead",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: discard your lowest-cost card, then deal damage equal to its cost to all enemies.",
+      "legendary": false
+    },
+    {
+      "id": "death_knight",
+      "type": "minion",
+      "name": "Death Knight",
+      "tribe": "Undead",
+      "cost": 7,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "lifesteal",
+        "taunt"
+      ],
+      "text": "Lifesteal. Taunt. Battlecry: equip a 3/2 blade.",
+      "legendary": true
+    },
+    {
+      "id": "revenant",
+      "type": "minion",
+      "name": "Revenant",
+      "tribe": "Undead",
+      "cost": 4,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "deathrattle",
+        "charge"
+      ],
+      "text": "Charge. Deathrattle: return this to your hand.",
+      "legendary": false
+    },
+    {
+      "id": "wight_frost",
+      "type": "minion",
+      "name": "Frostbite Wight",
+      "tribe": "Undead",
+      "cost": 3,
+      "atk": 2,
+      "hp": 3,
+      "keywords": [
+        "freeze",
+        "taunt"
+      ],
+      "text": "Taunt. Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "shadow",
+      "type": "minion",
+      "name": "Shadow",
+      "tribe": "Undead",
+      "cost": 2,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give an enemy minion -1 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "bone_naga",
+      "type": "minion",
+      "name": "Bone Naga",
+      "tribe": "Undead",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon a 2/2 Skeleton with Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "bodak",
+      "type": "minion",
+      "name": "Bodak",
+      "tribe": "Fiend",
+      "cost": 5,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to both heroes.",
+      "legendary": false
+    },
+    {
+      "id": "imp",
+      "type": "minion",
+      "name": "Imp",
+      "tribe": "Fiend",
+      "cost": 1,
+      "atk": 2,
+      "hp": 1,
+      "keywords": [
+        "haste"
+      ],
+      "text": "Haste.",
+      "legendary": false
+    },
+    {
+      "id": "quasit",
+      "type": "minion",
+      "name": "Quasit",
+      "tribe": "Fiend",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "dretch",
+      "type": "minion",
+      "name": "Dretch",
+      "tribe": "Fiend",
+      "cost": 1,
+      "atk": 1,
+      "hp": 3,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "manes",
+      "type": "minion",
+      "name": "Manes",
+      "tribe": "Fiend",
+      "cost": 1,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [],
+      "text": "A blob of chaos.",
+      "legendary": false
+    },
+    {
+      "id": "succubus",
+      "type": "minion",
+      "name": "Succubus",
+      "tribe": "Fiend",
+      "cost": 3,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: your opponent discards a random card.",
+      "legendary": false
+    },
+    {
+      "id": "incubus",
+      "type": "minion",
+      "name": "Incubus",
+      "tribe": "Fiend",
+      "cost": 3,
+      "atk": 3,
+      "hp": 4,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "barbed_devil",
+      "type": "minion",
+      "name": "Barbed Devil",
+      "tribe": "Fiend",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal damage to attackers. Whenever this survives damage, deal 2 back.",
+      "legendary": false
+    },
+    {
+      "id": "bearded_devil",
+      "type": "minion",
+      "name": "Bearded Devil",
+      "tribe": "Fiend",
+      "cost": 3,
+      "atk": 4,
+      "hp": 2,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "bone_devil",
+      "type": "minion",
+      "name": "Bone Devil",
+      "tribe": "Fiend",
+      "cost": 5,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "chain_devil",
+      "type": "minion",
+      "name": "Chain Devil",
+      "tribe": "Fiend",
+      "cost": 5,
+      "atk": 4,
+      "hp": 5,
+      "keywords": [
+        "battlecry",
+        "taunt"
+      ],
+      "text": "Taunt. Battlecry: freeze an enemy minion.",
+      "legendary": false
+    },
+    {
+      "id": "erinyes",
+      "type": "minion",
+      "name": "Erinyes",
+      "tribe": "Fiend",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "lifesteal",
+        "haste"
+      ],
+      "text": "Lifesteal. Haste.",
+      "legendary": false
+    },
+    {
+      "id": "horned_devil",
+      "type": "minion",
+      "name": "Horned Devil",
+      "tribe": "Fiend",
+      "cost": 6,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "ice_devil",
+      "type": "minion",
+      "name": "Ice Devil",
+      "tribe": "Fiend",
+      "cost": 6,
+      "atk": 5,
+      "hp": 6,
+      "keywords": [
+        "freeze",
+        "battlecry"
+      ],
+      "text": "Battlecry: freeze all enemy minions.",
+      "legendary": false
+    },
+    {
+      "id": "hell_hound",
+      "type": "minion",
+      "name": "Hell Hound",
+      "tribe": "Fiend",
+      "cost": 4,
+      "atk": 5,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to all enemy minions.",
+      "legendary": false
+    },
+    {
+      "id": "nightmare",
+      "type": "minion",
+      "name": "Nightmare",
+      "tribe": "Fiend",
+      "cost": 5,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "haste"
+      ],
+      "text": "Haste.",
+      "legendary": false
+    },
+    {
+      "id": "vrock",
+      "type": "minion",
+      "name": "Vrock",
+      "tribe": "Fiend",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 2 damage to all minions.",
+      "legendary": false
+    },
+    {
+      "id": "hezrou",
+      "type": "minion",
+      "name": "Hezrou",
+      "tribe": "Fiend",
+      "cost": 5,
+      "atk": 4,
+      "hp": 7,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "glabrezu",
+      "type": "minion",
+      "name": "Glabrezu",
+      "tribe": "Fiend",
+      "cost": 7,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy a minion, then take 3 damage.",
+      "legendary": false
+    },
+    {
+      "id": "nalfeshnee",
+      "type": "minion",
+      "name": "Nalfeshnee",
+      "tribe": "Fiend",
+      "cost": 7,
+      "atk": 6,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: summon two 2/2 Dretches with Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "marilith",
+      "type": "minion",
+      "name": "Marilith",
+      "tribe": "Fiend",
+      "cost": 7,
+      "atk": 7,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: this attacks a random enemy for each other friendly Fiend.",
+      "legendary": true
+    },
+    {
+      "id": "goristro",
+      "type": "minion",
+      "name": "Goristro",
+      "tribe": "Fiend",
+      "cost": 8,
+      "atk": 8,
+      "hp": 8,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "balor",
+      "type": "minion",
+      "name": "Balor",
+      "tribe": "Fiend",
+      "cost": 9,
+      "atk": 8,
+      "hp": 8,
+      "keywords": [
+        "deathrattle",
+        "haste"
+      ],
+      "text": "Haste. Deathrattle: deal 5 damage to all minions.",
+      "legendary": true
+    },
+    {
+      "id": "pit_fiend",
+      "type": "minion",
+      "name": "Pit Fiend",
+      "tribe": "Fiend",
+      "cost": 9,
+      "atk": 9,
+      "hp": 9,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: summon three 2/2 Lemures with Taunt.",
+      "legendary": true
+    },
+    {
+      "id": "lemure",
+      "type": "minion",
+      "name": "Lemure",
+      "tribe": "Fiend",
+      "cost": 1,
+      "atk": 1,
+      "hp": 2,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "rakshasa",
+      "type": "minion",
+      "name": "Rakshasa",
+      "tribe": "Fiend",
+      "cost": 6,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "ward",
+        "battlecry"
+      ],
+      "text": "Ward. Battlecry: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "shadow_demon",
+      "type": "minion",
+      "name": "Shadow Demon",
+      "tribe": "Fiend",
+      "cost": 4,
+      "atk": 5,
+      "hp": 2,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "yagnoloth",
+      "type": "minion",
+      "name": "Yagnoloth",
+      "tribe": "Fiend",
+      "cost": 6,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "ultroloth",
+      "type": "minion",
+      "name": "Ultroloth",
+      "tribe": "Fiend",
+      "cost": 7,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: take control of a random enemy minion until end of turn.",
+      "legendary": true
+    },
+    {
+      "id": "magma_mephit",
+      "type": "minion",
+      "name": "Magma Mephit",
+      "tribe": "Elemental",
+      "cost": 1,
+      "atk": 2,
+      "hp": 1,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 1 damage to a random enemy.",
+      "legendary": false
+    },
+    {
+      "id": "ice_mephit",
+      "type": "minion",
+      "name": "Ice Mephit",
+      "tribe": "Elemental",
+      "cost": 1,
+      "atk": 1,
+      "hp": 2,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "steam_mephit",
+      "type": "minion",
+      "name": "Steam Mephit",
+      "tribe": "Elemental",
+      "cost": 2,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "dust_mephit",
+      "type": "minion",
+      "name": "Dust Mephit",
+      "tribe": "Elemental",
+      "cost": 2,
+      "atk": 3,
+      "hp": 1,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: give a random enemy -1 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "magmin",
+      "type": "minion",
+      "name": "Magmin",
+      "tribe": "Elemental",
+      "cost": 2,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 2 damage to the minion that killed this.",
+      "legendary": false
+    },
+    {
+      "id": "fire_elemental",
+      "type": "minion",
+      "name": "Fire Elemental",
+      "tribe": "Elemental",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage.",
+      "legendary": false
+    },
+    {
+      "id": "greater_fire_ele",
+      "type": "minion",
+      "name": "Greater Fire Elemental",
+      "tribe": "Elemental",
+      "cost": 7,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 4 damage split among enemies.",
+      "legendary": false
+    },
+    {
+      "id": "water_elemental",
+      "type": "minion",
+      "name": "Water Elemental",
+      "tribe": "Elemental",
+      "cost": 4,
+      "atk": 3,
+      "hp": 5,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "earth_elemental",
+      "type": "minion",
+      "name": "Earth Elemental",
+      "tribe": "Elemental",
+      "cost": 5,
+      "atk": 4,
+      "hp": 8,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "greater_earth_ele",
+      "type": "minion",
+      "name": "Greater Earth Elemental",
+      "tribe": "Elemental",
+      "cost": 7,
+      "atk": 6,
+      "hp": 9,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "air_elemental",
+      "type": "minion",
+      "name": "Air Elemental",
+      "tribe": "Elemental",
+      "cost": 3,
+      "atk": 4,
+      "hp": 2,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "lightning_elemental",
+      "type": "minion",
+      "name": "Lightning Elemental",
+      "tribe": "Elemental",
+      "cost": 4,
+      "atk": 5,
+      "hp": 2,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "ice_elemental",
+      "type": "minion",
+      "name": "Ice Elemental",
+      "tribe": "Elemental",
+      "cost": 4,
+      "atk": 3,
+      "hp": 4,
+      "keywords": [
+        "freeze",
+        "taunt"
+      ],
+      "text": "Taunt. Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "invisible_stalker",
+      "type": "minion",
+      "name": "Invisible Stalker",
+      "tribe": "Elemental",
+      "cost": 4,
+      "atk": 5,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: this can't be targeted by enemies until it attacks.",
+      "legendary": false
+    },
+    {
+      "id": "salamander",
+      "type": "minion",
+      "name": "Salamander",
+      "tribe": "Elemental",
+      "cost": 5,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [],
+      "text": "Wreathed in flame.",
+      "legendary": false
+    },
+    {
+      "id": "efreeti",
+      "type": "minion",
+      "name": "Efreeti",
+      "tribe": "Elemental",
+      "cost": 7,
+      "atk": 7,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 5 damage to a minion.",
+      "legendary": true
+    },
+    {
+      "id": "djinni",
+      "type": "minion",
+      "name": "Djinni",
+      "tribe": "Elemental",
+      "cost": 6,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: draw 2 cards.",
+      "legendary": false
+    },
+    {
+      "id": "marid",
+      "type": "minion",
+      "name": "Marid",
+      "tribe": "Elemental",
+      "cost": 7,
+      "atk": 6,
+      "hp": 7,
+      "keywords": [
+        "freeze",
+        "battlecry"
+      ],
+      "text": "Battlecry: freeze an enemy minion and deal 3 damage to it.",
+      "legendary": false
+    },
+    {
+      "id": "xorn",
+      "type": "minion",
+      "name": "Xorn",
+      "tribe": "Elemental",
+      "cost": 5,
+      "atk": 4,
+      "hp": 6,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: gain 2 armor.",
+      "legendary": false
+    },
+    {
+      "id": "gargoyle",
+      "type": "minion",
+      "name": "Gargoyle",
+      "tribe": "Elemental",
+      "cost": 3,
+      "atk": 2,
+      "hp": 3,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "sprocket",
+      "type": "minion",
+      "name": "Rustling Sprocket",
+      "tribe": "Construct",
+      "cost": 1,
+      "atk": 2,
+      "hp": 1,
+      "keywords": [],
+      "text": "A basic cog.",
+      "legendary": false
+    },
+    {
+      "id": "clay_golem",
+      "type": "minion",
+      "name": "Clay Golem",
+      "tribe": "Construct",
+      "cost": 4,
+      "atk": 4,
+      "hp": 5,
+      "keywords": [],
+      "text": "Animated earth.",
+      "legendary": false
+    },
+    {
+      "id": "flesh_golem",
+      "type": "minion",
+      "name": "Flesh Golem",
+      "tribe": "Construct",
+      "cost": 5,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "iron_golem",
+      "type": "minion",
+      "name": "Iron Golem",
+      "tribe": "Construct",
+      "cost": 7,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "stone_golem",
+      "type": "minion",
+      "name": "Stone Golem",
+      "tribe": "Construct",
+      "cost": 6,
+      "atk": 5,
+      "hp": 7,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "crystal_golem",
+      "type": "minion",
+      "name": "Crystal Golem",
+      "tribe": "Construct",
+      "cost": 4,
+      "atk": 3,
+      "hp": 5,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "bone_golem",
+      "type": "minion",
+      "name": "Bone Golem",
+      "tribe": "Construct",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon two 2/2 Skeletons.",
+      "legendary": false
+    },
+    {
+      "id": "shield_guardian",
+      "type": "minion",
+      "name": "Shield Guardian",
+      "tribe": "Construct",
+      "cost": 5,
+      "atk": 3,
+      "hp": 7,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: give your hero 4 armor.",
+      "legendary": false
+    },
+    {
+      "id": "helmed_horror",
+      "type": "minion",
+      "name": "Helmed Horror",
+      "tribe": "Construct",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "animated_armor",
+      "type": "minion",
+      "name": "Animated Armor",
+      "tribe": "Construct",
+      "cost": 3,
+      "atk": 3,
+      "hp": 4,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "flying_sword",
+      "type": "minion",
+      "name": "Flying Sword",
+      "tribe": "Construct",
+      "cost": 2,
+      "atk": 3,
+      "hp": 1,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "clockwork_defender",
+      "type": "minion",
+      "name": "Clockwork Defender",
+      "tribe": "Construct",
+      "cost": 3,
+      "atk": 2,
+      "hp": 4,
+      "keywords": [
+        "taunt",
+        "deathrattle"
+      ],
+      "text": "Taunt. Deathrattle: summon a 1/1 Sprocket.",
+      "legendary": false
+    },
+    {
+      "id": "clockwork_titan",
+      "type": "minion",
+      "name": "Clockwork Titan",
+      "tribe": "Construct",
+      "cost": 8,
+      "atk": 8,
+      "hp": 8,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: summon a random Construct for each Construct you control.",
+      "legendary": true
+    },
+    {
+      "id": "brass_minotaur",
+      "type": "minion",
+      "name": "Brass Minotaur",
+      "tribe": "Construct",
+      "cost": 5,
+      "atk": 6,
+      "hp": 4,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "homunculus",
+      "type": "minion",
+      "name": "Homunculus",
+      "tribe": "Construct",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "rug_smothering",
+      "type": "minion",
+      "name": "Rug of Smothering",
+      "tribe": "Construct",
+      "cost": 2,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: silence an enemy minion.",
+      "legendary": false
+    },
+    {
+      "id": "hill_giant",
+      "type": "minion",
+      "name": "Hill Giant",
+      "tribe": "Giant",
+      "cost": 5,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [],
+      "text": "A boulder with fists.",
+      "legendary": false
+    },
+    {
+      "id": "stone_giant",
+      "type": "minion",
+      "name": "Stone Giant",
+      "tribe": "Giant",
+      "cost": 6,
+      "atk": 5,
+      "hp": 9,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "frost_giant",
+      "type": "minion",
+      "name": "Frost Giant",
+      "tribe": "Giant",
+      "cost": 6,
+      "atk": 6,
+      "hp": 7,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "fire_giant",
+      "type": "minion",
+      "name": "Fire Giant",
+      "tribe": "Giant",
+      "cost": 7,
+      "atk": 8,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "cloud_giant",
+      "type": "minion",
+      "name": "Cloud Giant",
+      "tribe": "Giant",
+      "cost": 7,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "storm_giant",
+      "type": "minion",
+      "name": "Storm Giant",
+      "tribe": "Giant",
+      "cost": 9,
+      "atk": 8,
+      "hp": 9,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 4 damage to all enemy minions.",
+      "legendary": true
+    },
+    {
+      "id": "cyclops",
+      "type": "minion",
+      "name": "Cyclops",
+      "tribe": "Giant",
+      "cost": 5,
+      "atk": 7,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "ettin",
+      "type": "minion",
+      "name": "Ettin",
+      "tribe": "Giant",
+      "cost": 5,
+      "atk": 5,
+      "hp": 6,
+      "keywords": [],
+      "text": "Two heads, one temper.",
+      "legendary": false
+    },
+    {
+      "id": "troll",
+      "type": "minion",
+      "name": "Troll",
+      "tribe": "Giant",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: return this to your hand.",
+      "legendary": false
+    },
+    {
+      "id": "venom_troll",
+      "type": "minion",
+      "name": "Venom Troll",
+      "tribe": "Giant",
+      "cost": 5,
+      "atk": 4,
+      "hp": 6,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 2 damage to all enemies.",
+      "legendary": false
+    },
+    {
+      "id": "oni",
+      "type": "minion",
+      "name": "Oni",
+      "tribe": "Giant",
+      "cost": 6,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to the enemy hero and draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "fomorian",
+      "type": "minion",
+      "name": "Fomorian",
+      "tribe": "Giant",
+      "cost": 7,
+      "atk": 6,
+      "hp": 8,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give an enemy minion -3/-3.",
+      "legendary": false
+    },
+    {
+      "id": "goliath",
+      "type": "minion",
+      "name": "Goliath Warrior",
+      "tribe": "Humanoid",
+      "cost": 4,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [],
+      "text": "A towering fighter.",
+      "legendary": false
+    },
+    {
+      "id": "firbolg",
+      "type": "minion",
+      "name": "Firbolg",
+      "tribe": "Giant",
+      "cost": 4,
+      "atk": 3,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: restore 4 health to your hero.",
+      "legendary": false
+    },
+    {
+      "id": "abominable_yeti",
+      "type": "minion",
+      "name": "Abominable Yeti",
+      "tribe": "Giant",
+      "cost": 6,
+      "atk": 5,
+      "hp": 7,
+      "keywords": [
+        "freeze",
+        "taunt"
+      ],
+      "text": "Taunt. Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "pixie",
+      "type": "minion",
+      "name": "Pixie",
+      "tribe": "Fey",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give a friendly minion +1/+1.",
+      "legendary": false
+    },
+    {
+      "id": "sprite",
+      "type": "minion",
+      "name": "Sprite",
+      "tribe": "Fey",
+      "cost": 2,
+      "atk": 2,
+      "hp": 1,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage and draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "quickling",
+      "type": "minion",
+      "name": "Quickling",
+      "tribe": "Fey",
+      "cost": 2,
+      "atk": 3,
+      "hp": 1,
+      "keywords": [
+        "haste"
+      ],
+      "text": "Haste.",
+      "legendary": false
+    },
+    {
+      "id": "redcap",
+      "type": "minion",
+      "name": "Redcap",
+      "tribe": "Fey",
+      "cost": 3,
+      "atk": 4,
+      "hp": 2,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "satyr",
+      "type": "minion",
+      "name": "Satyr",
+      "tribe": "Fey",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give a friendly minion +2 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "dryad",
+      "type": "minion",
+      "name": "Dryad",
+      "tribe": "Fey",
+      "cost": 3,
+      "atk": 2,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: summon two 1/1 Saplings with Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "green_hag",
+      "type": "minion",
+      "name": "Green Hag",
+      "tribe": "Fey",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give an enemy minion -2/-2.",
+      "legendary": false
+    },
+    {
+      "id": "night_hag",
+      "type": "minion",
+      "name": "Night Hag",
+      "tribe": "Fey",
+      "cost": 5,
+      "atk": 4,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: your opponent discards a card, you draw one.",
+      "legendary": false
+    },
+    {
+      "id": "annis_hag",
+      "type": "minion",
+      "name": "Annis Hag",
+      "tribe": "Fey",
+      "cost": 6,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal damage to a minion equal to its own Attack.",
+      "legendary": false
+    },
+    {
+      "id": "unicorn",
+      "type": "minion",
+      "name": "Unicorn",
+      "tribe": "Fey",
+      "cost": 5,
+      "atk": 4,
+      "hp": 5,
+      "keywords": [
+        "battlecry",
+        "ward"
+      ],
+      "text": "Ward. Battlecry: give a friendly minion Ward.",
+      "legendary": false
+    },
+    {
+      "id": "blink_dog",
+      "type": "minion",
+      "name": "Blink Dog",
+      "tribe": "Fey",
+      "cost": 2,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "rush",
+        "deathrattle"
+      ],
+      "text": "Rush. Deathrattle: return this to your hand.",
+      "legendary": false
+    },
+    {
+      "id": "harpy",
+      "type": "minion",
+      "name": "Harpy",
+      "tribe": "Fey",
+      "cost": 3,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: force an enemy minion to attack a random enemy.",
+      "legendary": false
+    },
+    {
+      "id": "korred",
+      "type": "minion",
+      "name": "Korred",
+      "tribe": "Fey",
+      "cost": 4,
+      "atk": 3,
+      "hp": 5,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: gain 3 armor.",
+      "legendary": false
+    },
+    {
+      "id": "nymph",
+      "type": "minion",
+      "name": "Nymph",
+      "tribe": "Fey",
+      "cost": 5,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: restore 5 health split among friendly characters.",
+      "legendary": false
+    },
+    {
+      "id": "treant",
+      "type": "minion",
+      "name": "Treant",
+      "tribe": "Fey",
+      "cost": 7,
+      "atk": 6,
+      "hp": 8,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "leprechaun",
+      "type": "minion",
+      "name": "Leprechaun",
+      "tribe": "Fey",
+      "cost": 2,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: gain 20 coins... add a Wish to your hand.",
+      "legendary": false
+    },
+    {
+      "id": "kitsune",
+      "type": "minion",
+      "name": "Kitsune",
+      "tribe": "Fey",
+      "cost": 4,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "battlecry",
+        "ward"
+      ],
+      "text": "Ward. Battlecry: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "ninetails",
+      "type": "minion",
+      "name": "Nine-Tailed Fox",
+      "tribe": "Fey",
+      "cost": 7,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: cast a random spell from your deck for free.",
+      "legendary": true
+    },
+    {
+      "id": "dire_wolf",
+      "type": "minion",
+      "name": "Dire Wolf",
+      "tribe": "Beast",
+      "cost": 2,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give an adjacent minion +1 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "winter_wolf",
+      "type": "minion",
+      "name": "Winter Wolf",
+      "tribe": "Beast",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "worg",
+      "type": "minion",
+      "name": "Worg",
+      "tribe": "Beast",
+      "cost": 3,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [],
+      "text": "A vicious pack-hunter.",
+      "legendary": false
+    },
+    {
+      "id": "dire_bear",
+      "type": "minion",
+      "name": "Dire Bear",
+      "tribe": "Beast",
+      "cost": 5,
+      "atk": 5,
+      "hp": 6,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "cave_bear",
+      "type": "minion",
+      "name": "Cave Bear",
+      "tribe": "Beast",
+      "cost": 4,
+      "atk": 4,
+      "hp": 5,
+      "keywords": [],
+      "text": "Bulk and claws.",
+      "legendary": false
+    },
+    {
+      "id": "dire_boar",
+      "type": "minion",
+      "name": "Dire Boar",
+      "tribe": "Beast",
+      "cost": 3,
+      "atk": 5,
+      "hp": 2,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "giant_spider",
+      "type": "minion",
+      "name": "Giant Spider",
+      "tribe": "Beast",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon two 1/1 Spiderlings.",
+      "legendary": false
+    },
+    {
+      "id": "phase_spider",
+      "type": "minion",
+      "name": "Phase Spider",
+      "tribe": "Beast",
+      "cost": 4,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "giant_eagle",
+      "type": "minion",
+      "name": "Giant Eagle",
+      "tribe": "Beast",
+      "cost": 3,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "roc",
+      "type": "minion",
+      "name": "Roc",
+      "tribe": "Beast",
+      "cost": 6,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "owlbear",
+      "type": "minion",
+      "name": "Owlbear",
+      "tribe": "Beast",
+      "cost": 4,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [],
+      "text": "Feathers and fury.",
+      "legendary": false
+    },
+    {
+      "id": "displacer_beast",
+      "type": "minion",
+      "name": "Displacer Beast",
+      "tribe": "Beast",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "giant_ape",
+      "type": "minion",
+      "name": "Giant Ape",
+      "tribe": "Beast",
+      "cost": 7,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 4 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "saber_tiger",
+      "type": "minion",
+      "name": "Saber-Toothed Tiger",
+      "tribe": "Beast",
+      "cost": 5,
+      "atk": 6,
+      "hp": 4,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "trex",
+      "type": "minion",
+      "name": "Tyrannosaurus Rex",
+      "tribe": "Beast",
+      "cost": 8,
+      "atk": 9,
+      "hp": 8,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "triceratops",
+      "type": "minion",
+      "name": "Triceratops",
+      "tribe": "Beast",
+      "cost": 6,
+      "atk": 5,
+      "hp": 8,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "ankylosaurus",
+      "type": "minion",
+      "name": "Ankylosaurus",
+      "tribe": "Beast",
+      "cost": 5,
+      "atk": 3,
+      "hp": 9,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "velociraptor",
+      "type": "minion",
+      "name": "Velociraptor",
+      "tribe": "Beast",
+      "cost": 2,
+      "atk": 3,
+      "hp": 1,
+      "keywords": [
+        "haste"
+      ],
+      "text": "Haste.",
+      "legendary": false
+    },
+    {
+      "id": "phoenix",
+      "type": "minion",
+      "name": "Phoenix",
+      "tribe": "Beast",
+      "cost": 6,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: return this to the battlefield with 1 Health.",
+      "legendary": true
+    },
+    {
+      "id": "thunderbird",
+      "type": "minion",
+      "name": "Thunderbird",
+      "tribe": "Beast",
+      "cost": 5,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to all enemies twice.",
+      "legendary": false
+    },
+    {
+      "id": "rust_monster",
+      "type": "minion",
+      "name": "Rust Monster",
+      "tribe": "Monstrosity",
+      "cost": 3,
+      "atk": 2,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy a random enemy Construct or give a minion -2 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "swarm_bats",
+      "type": "minion",
+      "name": "Swarm of Bats",
+      "tribe": "Beast",
+      "cost": 3,
+      "atk": 4,
+      "hp": 2,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "beholder",
+      "type": "minion",
+      "name": "Beholder",
+      "tribe": "Aberration",
+      "cost": 7,
+      "atk": 6,
+      "hp": 7,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to 3 random enemies and silence one.",
+      "legendary": true
+    },
+    {
+      "id": "death_tyrant",
+      "type": "minion",
+      "name": "Death Tyrant",
+      "tribe": "Aberration",
+      "cost": 8,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 3 damage to all enemy minions.",
+      "legendary": true
+    },
+    {
+      "id": "spectator",
+      "type": "minion",
+      "name": "Spectator",
+      "tribe": "Aberration",
+      "cost": 4,
+      "atk": 3,
+      "hp": 5,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: restore 3 health to your hero.",
+      "legendary": false
+    },
+    {
+      "id": "mind_flayer",
+      "type": "minion",
+      "name": "Mind Flayer",
+      "tribe": "Aberration",
+      "cost": 6,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: take control of an enemy minion with 3 or less Attack until end of turn.",
+      "legendary": false
+    },
+    {
+      "id": "elder_brain",
+      "type": "minion",
+      "name": "Elder Brain",
+      "tribe": "Aberration",
+      "cost": 9,
+      "atk": 7,
+      "hp": 9,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: for each Aberration you control, draw a card and deal 2 to the enemy hero.",
+      "legendary": true
+    },
+    {
+      "id": "intellect_devourer",
+      "type": "minion",
+      "name": "Intellect Devourer",
+      "tribe": "Aberration",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: look at a random card in your opponent's hand.",
+      "legendary": false
+    },
+    {
+      "id": "aboleth",
+      "type": "minion",
+      "name": "Aboleth",
+      "tribe": "Aberration",
+      "cost": 6,
+      "atk": 5,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: swap control of two random minions.",
+      "legendary": false
+    },
+    {
+      "id": "chuul",
+      "type": "minion",
+      "name": "Chuul",
+      "tribe": "Aberration",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "cloaker",
+      "type": "minion",
+      "name": "Cloaker",
+      "tribe": "Aberration",
+      "cost": 4,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give a friendly minion 'can't be targeted' this turn.",
+      "legendary": false
+    },
+    {
+      "id": "gibbering_mouther",
+      "type": "minion",
+      "name": "Gibbering Mouther",
+      "tribe": "Aberration",
+      "cost": 3,
+      "atk": 2,
+      "hp": 4,
+      "keywords": [
+        "taunt",
+        "deathrattle"
+      ],
+      "text": "Taunt. Deathrattle: give a random enemy -2 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "nothic",
+      "type": "minion",
+      "name": "Nothic",
+      "tribe": "Aberration",
+      "cost": 3,
+      "atk": 4,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: look at the top card of your opponent's deck.",
+      "legendary": false
+    },
+    {
+      "id": "otyugh",
+      "type": "minion",
+      "name": "Otyugh",
+      "tribe": "Aberration",
+      "cost": 5,
+      "atk": 4,
+      "hp": 6,
+      "keywords": [
+        "taunt",
+        "lifesteal"
+      ],
+      "text": "Taunt. Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "roper",
+      "type": "minion",
+      "name": "Roper",
+      "tribe": "Aberration",
+      "cost": 5,
+      "atk": 3,
+      "hp": 8,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "umber_hulk",
+      "type": "minion",
+      "name": "Umber Hulk",
+      "tribe": "Monstrosity",
+      "cost": 6,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to all minions.",
+      "legendary": false
+    },
+    {
+      "id": "star_spawn_hulk",
+      "type": "minion",
+      "name": "Star Spawn Hulk",
+      "tribe": "Aberration",
+      "cost": 7,
+      "atk": 7,
+      "hp": 7,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: deal 3 damage to the enemy hero.",
+      "legendary": false
+    },
+    {
+      "id": "neothelid",
+      "type": "minion",
+      "name": "Neothelid",
+      "tribe": "Aberration",
+      "cost": 8,
+      "atk": 7,
+      "hp": 8,
+      "keywords": [
+        "lifesteal"
+      ],
+      "text": "Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "basilisk",
+      "type": "minion",
+      "name": "Basilisk",
+      "tribe": "Monstrosity",
+      "cost": 4,
+      "atk": 3,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy a minion with 2 or less Attack.",
+      "legendary": false
+    },
+    {
+      "id": "cockatrice",
+      "type": "minion",
+      "name": "Cockatrice",
+      "tribe": "Monstrosity",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "freeze"
+      ],
+      "text": "Freeze any minion this damages.",
+      "legendary": false
+    },
+    {
+      "id": "medusa",
+      "type": "minion",
+      "name": "Medusa",
+      "tribe": "Monstrosity",
+      "cost": 6,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy an enemy minion with 4 or less Attack.",
+      "legendary": false
+    },
+    {
+      "id": "chimera",
+      "type": "minion",
+      "name": "Chimera",
+      "tribe": "Monstrosity",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 2 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "manticore",
+      "type": "minion",
+      "name": "Manticore",
+      "tribe": "Monstrosity",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to 3 random enemies.",
+      "legendary": false
+    },
+    {
+      "id": "griffon",
+      "type": "minion",
+      "name": "Griffon",
+      "tribe": "Beast",
+      "cost": 4,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "hippogriff",
+      "type": "minion",
+      "name": "Hippogriff",
+      "tribe": "Beast",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "gorgon",
+      "type": "minion",
+      "name": "Gorgon",
+      "tribe": "Monstrosity",
+      "cost": 5,
+      "atk": 4,
+      "hp": 6,
+      "keywords": [
+        "taunt",
+        "deathrattle"
+      ],
+      "text": "Taunt. Deathrattle: give a random enemy minion -3 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "bulette",
+      "type": "minion",
+      "name": "Bulette",
+      "tribe": "Monstrosity",
+      "cost": 5,
+      "atk": 6,
+      "hp": 5,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "purple_worm",
+      "type": "minion",
+      "name": "Purple Worm",
+      "tribe": "Monstrosity",
+      "cost": 8,
+      "atk": 8,
+      "hp": 8,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy a random enemy minion.",
+      "legendary": false
+    },
+    {
+      "id": "remorhaz",
+      "type": "minion",
+      "name": "Remorhaz",
+      "tribe": "Monstrosity",
+      "cost": 6,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage to a minion; if it dies, gain +3/+3.",
+      "legendary": false
+    },
+    {
+      "id": "hydra",
+      "type": "minion",
+      "name": "5-Headed Hydra",
+      "tribe": "Monstrosity",
+      "cost": 7,
+      "atk": 5,
+      "hp": 7,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon a 3/3 Hydra.",
+      "legendary": false
+    },
+    {
+      "id": "pyrohydra",
+      "type": "minion",
+      "name": "Pyrohydra",
+      "tribe": "Monstrosity",
+      "cost": 6,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to all enemies for each of its heads (3).",
+      "legendary": false
+    },
+    {
+      "id": "nemean_lion",
+      "type": "minion",
+      "name": "Nemean Lion",
+      "tribe": "Beast",
+      "cost": 5,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "ward"
+      ],
+      "text": "Ward.",
+      "legendary": false
+    },
+    {
+      "id": "cerberus",
+      "type": "minion",
+      "name": "Cerberus",
+      "tribe": "Monstrosity",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "taunt",
+        "rush"
+      ],
+      "text": "Taunt. Rush.",
+      "legendary": false
+    },
+    {
+      "id": "tarrasque",
+      "type": "minion",
+      "name": "Tarrasque",
+      "tribe": "Monstrosity",
+      "cost": 10,
+      "atk": 12,
+      "hp": 12,
+      "keywords": [
+        "ward",
+        "charge"
+      ],
+      "text": "Ward. Charge. Can't be targeted by spells or hero powers.",
+      "legendary": true
+    },
+    {
+      "id": "kraken",
+      "type": "minion",
+      "name": "Kraken",
+      "tribe": "Monstrosity",
+      "cost": 9,
+      "atk": 8,
+      "hp": 9,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: destroy an enemy minion and deal 4 to the enemy hero.",
+      "legendary": true
+    },
+    {
+      "id": "androsphinx",
+      "type": "minion",
+      "name": "Androsphinx",
+      "tribe": "Monstrosity",
+      "cost": 6,
+      "atk": 5,
+      "hp": 7,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "couatl",
+      "type": "minion",
+      "name": "Couatl",
+      "tribe": "Monstrosity",
+      "cost": 4,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "ward",
+        "lifesteal"
+      ],
+      "text": "Ward. Lifesteal.",
+      "legendary": false
+    },
+    {
+      "id": "chupacabra",
+      "type": "minion",
+      "name": "Chupacabra",
+      "tribe": "Monstrosity",
+      "cost": 2,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "lifesteal",
+        "deathrattle"
+      ],
+      "text": "Lifesteal. Deathrattle: restore 2 health to your hero.",
+      "legendary": false
+    },
+    {
+      "id": "mothman",
+      "type": "minion",
+      "name": "Mothman",
+      "tribe": "Aberration",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: look at the top 2 cards of your deck; draw one.",
+      "legendary": false
+    },
+    {
+      "id": "kobold",
+      "type": "minion",
+      "name": "Kobold",
+      "tribe": "Humanoid",
+      "cost": 1,
+      "atk": 1,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give a friendly Dragon +1/+1.",
+      "legendary": false
+    },
+    {
+      "id": "winged_kobold",
+      "type": "minion",
+      "name": "Winged Kobold",
+      "tribe": "Humanoid",
+      "cost": 2,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "rush"
+      ],
+      "text": "Rush.",
+      "legendary": false
+    },
+    {
+      "id": "kobold_inventor",
+      "type": "minion",
+      "name": "Kobold Inventor",
+      "tribe": "Humanoid",
+      "cost": 2,
+      "atk": 1,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: add a random spell to your hand.",
+      "legendary": false
+    },
+    {
+      "id": "goblin",
+      "type": "minion",
+      "name": "Goblin",
+      "tribe": "Humanoid",
+      "cost": 1,
+      "atk": 2,
+      "hp": 1,
+      "keywords": [],
+      "text": "Small and mean.",
+      "legendary": false
+    },
+    {
+      "id": "goblin_boss",
+      "type": "minion",
+      "name": "Goblin Boss",
+      "tribe": "Humanoid",
+      "cost": 3,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: summon two 1/1 Goblins.",
+      "legendary": false
+    },
+    {
+      "id": "hobgoblin",
+      "type": "minion",
+      "name": "Hobgoblin",
+      "tribe": "Humanoid",
+      "cost": 2,
+      "atk": 2,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give a friendly minion +1 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "bugbear",
+      "type": "minion",
+      "name": "Bugbear",
+      "tribe": "Humanoid",
+      "cost": 3,
+      "atk": 5,
+      "hp": 2,
+      "keywords": [
+        "charge"
+      ],
+      "text": "Charge.",
+      "legendary": false
+    },
+    {
+      "id": "orc",
+      "type": "minion",
+      "name": "Orc",
+      "tribe": "Humanoid",
+      "cost": 2,
+      "atk": 3,
+      "hp": 2,
+      "keywords": [],
+      "text": "Blood and iron.",
+      "legendary": false
+    },
+    {
+      "id": "orc_chieftain",
+      "type": "minion",
+      "name": "Orc Chieftain",
+      "tribe": "Humanoid",
+      "cost": 4,
+      "atk": 3,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give your other minions +1 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "lizardfolk",
+      "type": "minion",
+      "name": "Lizardfolk",
+      "tribe": "Humanoid",
+      "cost": 2,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [],
+      "text": "Cold-blooded warrior.",
+      "legendary": false
+    },
+    {
+      "id": "lizard_king",
+      "type": "minion",
+      "name": "Lizard King",
+      "tribe": "Humanoid",
+      "cost": 5,
+      "atk": 5,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give a friendly Beast +2/+2 and Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "yuanti_pureblood",
+      "type": "minion",
+      "name": "Yuan-Ti Pureblood",
+      "tribe": "Humanoid",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: add a random spell to your hand.",
+      "legendary": false
+    },
+    {
+      "id": "yuanti_abomination",
+      "type": "minion",
+      "name": "Yuan-Ti Abomination",
+      "tribe": "Monstrosity",
+      "cost": 6,
+      "atk": 6,
+      "hp": 6,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 3 damage to a minion.",
+      "legendary": false
+    },
+    {
+      "id": "sahuagin",
+      "type": "minion",
+      "name": "Sahuagin",
+      "tribe": "Humanoid",
+      "cost": 2,
+      "atk": 3,
+      "hp": 1,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "sahuagin_baron",
+      "type": "minion",
+      "name": "Sahuagin Baron",
+      "tribe": "Humanoid",
+      "cost": 5,
+      "atk": 5,
+      "hp": 4,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: give your other minions +1 Attack.",
+      "legendary": false
+    },
+    {
+      "id": "merfolk",
+      "type": "minion",
+      "name": "Merfolk",
+      "tribe": "Humanoid",
+      "cost": 1,
+      "atk": 1,
+      "hp": 3,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "Taunt.",
+      "legendary": false
+    },
+    {
+      "id": "gnoll_pack_lord",
+      "type": "minion",
+      "name": "Gnoll Pack Lord",
+      "tribe": "Humanoid",
+      "cost": 4,
+      "atk": 4,
+      "hp": 3,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: summon a 2/2 Hyena with Rush.",
+      "legendary": false
+    },
+    {
+      "id": "mind_witness",
+      "type": "minion",
+      "name": "Mindwitness",
+      "tribe": "Aberration",
+      "cost": 5,
+      "atk": 4,
+      "hp": 5,
+      "keywords": [
+        "battlecry"
+      ],
+      "text": "Battlecry: deal 1 damage to all enemies and draw a card.",
+      "legendary": false
+    },
+    {
+      "id": "gray_ooze",
+      "type": "minion",
+      "name": "Gray Ooze",
+      "tribe": "Ooze",
+      "cost": 2,
+      "atk": 2,
+      "hp": 3,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon a 1/1 Ooze.",
+      "legendary": false
+    },
+    {
+      "id": "ochre_jelly",
+      "type": "minion",
+      "name": "Ochre Jelly",
+      "tribe": "Ooze",
+      "cost": 4,
+      "atk": 3,
+      "hp": 5,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: summon two 2/2 Jellies.",
+      "legendary": false
+    },
+    {
+      "id": "gelatinous_cube",
+      "type": "minion",
+      "name": "Gelatinous Cube",
+      "tribe": "Ooze",
+      "cost": 5,
+      "atk": 4,
+      "hp": 7,
+      "keywords": [
+        "taunt",
+        "battlecry"
+      ],
+      "text": "Taunt. Battlecry: engulf an enemy minion (silence and freeze it).",
+      "legendary": false
+    },
+    {
+      "id": "black_pudding",
+      "type": "minion",
+      "name": "Black Pudding",
+      "tribe": "Ooze",
+      "cost": 6,
+      "atk": 5,
+      "hp": 6,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: split into two 3/3 Puddings.",
+      "legendary": false
+    },
+    {
+      "id": "void_ooze",
+      "type": "minion",
+      "name": "Void Ooze",
+      "tribe": "Ooze",
+      "cost": 3,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: give a random enemy minion -2/-2.",
+      "legendary": false
+    },
+    {
+      "id": "crystal_ooze",
+      "type": "minion",
+      "name": "Crystal Ooze",
+      "tribe": "Ooze",
+      "cost": 3,
+      "atk": 2,
+      "hp": 4,
+      "keywords": [
+        "ward",
+        "deathrattle"
+      ],
+      "text": "Ward. Deathrattle: summon a 1/1 Ooze.",
+      "legendary": false
+    },
+    {
+      "id": "magma_ooze",
+      "type": "minion",
+      "name": "Magma Ooze",
+      "tribe": "Ooze",
+      "cost": 4,
+      "atk": 4,
+      "hp": 4,
+      "keywords": [
+        "deathrattle"
+      ],
+      "text": "Deathrattle: deal 2 damage to all minions.",
+      "legendary": false
+    },
+    {
+      "id": "spark_bolt",
+      "type": "spell",
+      "name": "Spark Bolt",
+      "tribe": "Spell",
+      "cost": 1,
+      "text": "Deal 2 damage to any target.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "magic_missile",
+      "type": "spell",
+      "name": "Magic Missile",
+      "tribe": "Spell",
+      "cost": 1,
+      "text": "Deal 3 damage split among random enemies.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "firebolt",
+      "type": "spell",
+      "name": "Fire Bolt",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Deal 3 damage to a minion.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "fireball",
+      "type": "spell",
+      "name": "Fireball",
+      "tribe": "Spell",
+      "cost": 4,
+      "text": "Deal 5 damage to any target.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "meteor",
+      "type": "spell",
+      "name": "Meteor Swarm",
+      "tribe": "Spell",
+      "cost": 8,
+      "text": "Deal 10 damage split among all enemies.",
+      "keywords": [],
+      "legendary": true
+    },
+    {
+      "id": "cloudkill",
+      "type": "spell",
+      "name": "Cloudkill",
+      "tribe": "Spell",
+      "cost": 5,
+      "text": "Deal 3 damage to all enemy minions.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "lightning_storm",
+      "type": "spell",
+      "name": "Lightning Storm",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Deal 2 damage to all enemy minions.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "cone_cold",
+      "type": "spell",
+      "name": "Cone of Cold",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Freeze all enemy minions and deal 1 damage to them.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "disintegrate",
+      "type": "spell",
+      "name": "Disintegrate",
+      "tribe": "Spell",
+      "cost": 5,
+      "text": "Destroy a minion.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "polymorph",
+      "type": "spell",
+      "name": "Polymorph",
+      "tribe": "Spell",
+      "cost": 4,
+      "text": "Transform a minion into a 1/1 Sheep.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "banishment",
+      "type": "spell",
+      "name": "Banishment",
+      "tribe": "Spell",
+      "cost": 4,
+      "text": "Return a minion to its owner's hand; it costs (2) more.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "hold_monster",
+      "type": "spell",
+      "name": "Hold Monster",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Freeze a minion. It doesn't ready next turn either.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "turn_undead",
+      "type": "spell",
+      "name": "Turn Undead",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Destroy an enemy Undead, or deal 4 damage to any minion.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "counterspell",
+      "type": "spell",
+      "name": "Counterspell",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Silence a minion and deal 2 damage to it.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "power_word_kill",
+      "type": "spell",
+      "name": "Power Word: Kill",
+      "tribe": "Spell",
+      "cost": 5,
+      "text": "Destroy a minion with 5 or more Attack.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "chain_lightning",
+      "type": "spell",
+      "name": "Chain Lightning",
+      "tribe": "Spell",
+      "cost": 4,
+      "text": "Deal 2 damage to an enemy, then 2 to another, then 2 to a third.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "bless",
+      "type": "spell",
+      "name": "Bless",
+      "tribe": "Spell",
+      "cost": 1,
+      "text": "Give a friendly minion +1/+1.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "heroism",
+      "type": "spell",
+      "name": "Heroism",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Give a friendly minion +2/+1 and Taunt.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "enlarge",
+      "type": "spell",
+      "name": "Enlarge",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Give a friendly minion +3/+3.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "haste_spell",
+      "type": "spell",
+      "name": "Haste",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Give a friendly minion +2 Attack and Haste this turn.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "divine_shield_spell",
+      "type": "spell",
+      "name": "Aegis",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Give a friendly minion Ward.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "blessing_might",
+      "type": "spell",
+      "name": "Blessing of Might",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Give your minions +1/+1.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "cure_wounds",
+      "type": "spell",
+      "name": "Cure Wounds",
+      "tribe": "Spell",
+      "cost": 1,
+      "text": "Restore 5 health to a friendly character.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "mass_heal",
+      "type": "spell",
+      "name": "Mass Healing Word",
+      "tribe": "Spell",
+      "cost": 4,
+      "text": "Restore 3 health to all friendly characters.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "shield_of_faith",
+      "type": "spell",
+      "name": "Shield of Faith",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Gain 6 armor.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "divination",
+      "type": "spell",
+      "name": "Divination",
+      "tribe": "Spell",
+      "cost": 1,
+      "text": "Draw a card.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "draught_insight",
+      "type": "spell",
+      "name": "Draught of Insight",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Draw 2 cards.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "contact_plane",
+      "type": "spell",
+      "name": "Contact Other Plane",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Draw 3 cards; take 2 damage.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "raise_dead",
+      "type": "spell",
+      "name": "Raise Dead",
+      "tribe": "Spell",
+      "cost": 4,
+      "text": "Summon a friendly minion that died this game.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "animate_dead",
+      "type": "spell",
+      "name": "Animate Dead",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Summon the highest-cost minion that died this game with 1 Health.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "wish",
+      "type": "spell",
+      "name": "Wish",
+      "tribe": "Spell",
+      "cost": 6,
+      "text": "Add a copy of a random Legendary minion to your hand.",
+      "keywords": [],
+      "legendary": true
+    },
+    {
+      "id": "summon_swarm",
+      "type": "spell",
+      "name": "Conjure Swarm",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Summon three 1/1 Spiderlings.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "healing_spirit",
+      "type": "spell",
+      "name": "Healing Spirit",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Restore 4 health to your hero and draw a card.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "web",
+      "type": "spell",
+      "name": "Web",
+      "tribe": "Spell",
+      "cost": 1,
+      "text": "Freeze an enemy minion.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "entangle",
+      "type": "spell",
+      "name": "Entangle",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Freeze all enemy minions.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "blade_barrier",
+      "type": "spell",
+      "name": "Blade Barrier",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Deal 1 damage to all enemy minions. Repeat at the start of your next turn.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "mirror_image",
+      "type": "spell",
+      "name": "Mirror Image",
+      "tribe": "Spell",
+      "cost": 1,
+      "text": "Summon two 0/2 Illusions with Taunt.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "meld",
+      "type": "spell",
+      "name": "Reforge",
+      "tribe": "Spell",
+      "cost": 2,
+      "text": "Destroy a friendly minion; add two random cards of that tribe to your hand.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "dominate",
+      "type": "spell",
+      "name": "Dominate Monster",
+      "tribe": "Spell",
+      "cost": 7,
+      "text": "Take control of an enemy minion.",
+      "keywords": [],
+      "legendary": true
+    },
+    {
+      "id": "mass_dispel",
+      "type": "spell",
+      "name": "Mass Dispel",
+      "tribe": "Spell",
+      "cost": 3,
+      "text": "Silence all enemy minions.",
+      "keywords": [],
+      "legendary": false
+    },
+    {
+      "id": "t_sprocket",
+      "type": "minion",
+      "name": "Sprocket",
+      "tribe": "Construct",
+      "cost": 1,
+      "atk": 2,
+      "hp": 1,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_skeleton",
+      "type": "minion",
+      "name": "Skeleton",
+      "tribe": "Undead",
+      "cost": 1,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_skeleton_taunt",
+      "type": "minion",
+      "name": "Skeleton",
+      "tribe": "Undead",
+      "cost": 1,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_spiderling",
+      "type": "minion",
+      "name": "Spiderling",
+      "tribe": "Beast",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_ooze",
+      "type": "minion",
+      "name": "Ooze",
+      "tribe": "Ooze",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_jelly",
+      "type": "minion",
+      "name": "Jelly",
+      "tribe": "Ooze",
+      "cost": 1,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_pudding",
+      "type": "minion",
+      "name": "Pudding",
+      "tribe": "Ooze",
+      "cost": 1,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_goblin",
+      "type": "minion",
+      "name": "Goblin",
+      "tribe": "Humanoid",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_sapling",
+      "type": "minion",
+      "name": "Sapling",
+      "tribe": "Fey",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_dretch",
+      "type": "minion",
+      "name": "Dretch",
+      "tribe": "Fiend",
+      "cost": 1,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_lemure",
+      "type": "minion",
+      "name": "Lemure",
+      "tribe": "Fiend",
+      "cost": 1,
+      "atk": 1,
+      "hp": 2,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_mummy",
+      "type": "minion",
+      "name": "Mummy",
+      "tribe": "Undead",
+      "cost": 1,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_hydra",
+      "type": "minion",
+      "name": "Hydra",
+      "tribe": "Monstrosity",
+      "cost": 1,
+      "atk": 3,
+      "hp": 3,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_hyena",
+      "type": "minion",
+      "name": "Hyena",
+      "tribe": "Beast",
+      "cost": 1,
+      "atk": 2,
+      "hp": 2,
+      "keywords": [
+        "rush"
+      ],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_sheep",
+      "type": "minion",
+      "name": "Sheep",
+      "tribe": "Beast",
+      "cost": 1,
+      "atk": 1,
+      "hp": 1,
+      "keywords": [],
+      "text": "",
+      "legendary": false,
+      "token": true
+    },
+    {
+      "id": "t_illusion",
+      "type": "minion",
+      "name": "Illusion",
+      "tribe": "Construct",
+      "cost": 1,
+      "atk": 0,
+      "hp": 2,
+      "keywords": [
+        "taunt"
+      ],
+      "text": "",
+      "legendary": false,
+      "token": true
+    }
+  ]
+}

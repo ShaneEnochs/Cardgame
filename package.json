@@ -1,0 +1,15 @@
+{
+  "name": "forgebound-bestiary",
+  "version": "0.1.0",
+  "description": "Forgebound: Bestiary — a Hearthstone-lite duel card game. Local web app, zero dependencies.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/",
+    "balance": "node scripts/balance-audit.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
