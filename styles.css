@@ -447,3 +447,99 @@ h1, h2, h3 { font-weight: 700; letter-spacing: 0.01em; margin: 0; }
   .builder { grid-template-columns: 1fr; }
   .deck-panel { border-left: none; padding-left: 0; }
 }
+
+/* ---------------- phones / narrow touch screens ----------------
+ * Desktop keeps its fixed-size, roomy layout above. Below ~720px the board
+ * would otherwise overflow: the absolute log floats over the opponent's
+ * minions, and up to seven minions a side spill down onto the hand. Here the
+ * battlefield scrolls on its own, the log is a toggled overlay, and every
+ * fixed-width piece shrinks so nothing overlaps. */
+@media (max-width: 720px) {
+  html, body { font-size: 15px; }
+  body { overflow-x: hidden; }
+
+  .masthead { padding: 8px 12px 6px; gap: 4px 12px; flex-wrap: wrap; }
+  .masthead h1 { font-size: 18px; }
+  .masthead .crumbs { font-size: 12px; }
+  .masthead .coin-purse { font-size: 12px; }
+
+  .screen { padding: 12px; }
+
+  /* menu */
+  .menu-wrap { margin-top: 3vh; }
+  .menu-title { font-size: 32px; }
+  .menu-list { max-width: none; }
+  .menu-list button { font-size: 16px; }
+
+  /* setup */
+  .setup-cols { gap: 16px; }
+  .setup-panel { min-width: 0; width: 100%; }
+  .setup-actions button { flex: 1; }
+
+  /* collection / deckbuilder */
+  .browser .grid { grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 8px; }
+  .browser .filters { gap: 8px; }
+  .browser .filters input[type="text"] { flex: 1; min-width: 0; }
+
+  /* shop */
+  .pack-offer { padding: 16px; gap: 16px; }
+
+  /* overlays fit the viewport, cards inside scale down */
+  .overlay .panel { padding: 18px 16px; max-width: 92vw; }
+  .overlay .panel h2 { font-size: 20px; }
+  .overlay .choice-row { gap: 8px; }
+  .overlay .choice-row .card { width: 120px; min-height: 164px; }
+
+  /* ---- game board ---- */
+  .opp-strip { padding: 6px 10px; gap: 8px; flex-wrap: wrap; }
+
+  .hero-plate { padding: 4px 8px; gap: 6px; }
+  .hero-plate .hname { font-size: 13px; }
+  .hero-plate .hhp { font-size: 16px; }
+
+  /* hero + hero-power wrap instead of pushing off-screen */
+  .hero-power-wrap { flex-wrap: wrap; }
+  .my-hero-row { padding: 6px 10px 0 !important; flex-wrap: wrap; }
+  .power-btn { max-width: none; }
+
+  /* The board scrolls on its own so minions never spill onto the hand. Let the
+   * lanes take their natural height (auto rows, not fixed 1fr) — otherwise a
+   * lane that wraps to a second row overflows its cell and overlaps the
+   * midline and hero plate. */
+  .battlefield { grid-template-rows: auto auto auto; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .lane { min-height: 84px; gap: 6px; padding: 6px 8px; align-content: center; }
+
+  .minion { width: 84px; padding: 5px 6px 4px; }
+  .minion .mname { font-size: 11px; min-height: 22px; }
+  .minion .mtags { font-size: 9px; min-height: 12px; }
+  .minion .mstats { font-size: 13px; }
+
+  /* log: a fixed slide-in panel, shown only when toggled on */
+  .game-log {
+    position: fixed;
+    top: 54px;
+    right: 6px;
+    left: auto;
+    width: 78vw;
+    max-width: 300px;
+    max-height: 60vh;
+    z-index: 70;
+    box-shadow: 3px 3px 0 rgba(33, 32, 27, 0.4);
+  }
+
+  .midline { padding: 3px 10px; gap: 6px; font-size: 12px; flex-wrap: wrap; }
+  .midline .turn-name { font-size: 12px; }
+  .midline-hint { display: none; }
+
+  /* hand */
+  .hand-strip { min-height: 0; padding: 8px; gap: 8px; }
+  .hand-strip .hand-cards { gap: 6px; }
+  .hand-strip .card { width: 104px; min-height: 142px; }
+  .hand-strip .card .cname { font-size: 12px; margin-top: 14px; }
+  .hand-strip .card .ctext { font-size: 10px; }
+  .hand-strip .end-col { gap: 6px; }
+
+  /* generic cards (choice dialogs, shop reveal) */
+  .card { width: 116px; min-height: 158px; }
+  .browser .card { width: auto; }
+}
