@@ -29,6 +29,9 @@ export function renderGame(root, ctx) {
 
   // ---- UI-only selection state (never inside the engine state) ----
   let targeting = null; // {source, candidates:[ref], cardUid?}
+  // The log floats over the board; on a phone that overlaps minions, so it
+  // starts collapsed there and the player toggles it from the midline.
+  let showLog = !(typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 720px)').matches);
 
   const sameRef = (a, b) => a && b && a.kind === b.kind && a.player === b.player && (a.kind === 'hero' || a.uid === b.uid);
   const isCandidate = (ref) => targeting && targeting.candidates.some((c) => sameRef(c, ref));
@@ -271,7 +274,7 @@ export function renderGame(root, ctx) {
       el('span', { class: 'pname', text: `${power.name} (${power.cost})` }),
       el('span', { class: 'ptext', text: power.text })
     );
-    return el('div', { style: 'display:flex; gap:10px; align-items:center;' }, plate, powerBtn);
+    return el('div', { class: 'hero-power-wrap', style: 'display:flex; gap:10px; align-items:center;' }, plate, powerBtn);
   }
 
   function lane(playerId) {
@@ -446,11 +449,13 @@ export function renderGame(root, ctx) {
       el('span', { class: 'turn-name' }, s.winner ? 'duel over' : `${poss(s.players[s.active].name)} turn`),
       el('span', {}, `turn ${s.turnNumber}`),
       el('span', { class: 'spacer' }),
+      targeting ? el('button', { class: 'quiet', onclick: () => cancelTargeting() }, 'cancel') : null,
+      el('button', { class: 'quiet log-toggle', onclick: () => { showLog = !showLog; draw(); } }, showLog ? 'hide log' : 'log'),
       targeting
-        ? el('span', {}, 'choose a target — right-click or Esc to cancel')
+        ? el('span', { class: 'midline-hint' }, 'tap a target — or tap empty space to cancel')
         : session.mode === 'ai' && s.active === 'p2' && !s.winner
-          ? el('span', {}, 'the Archivist is thinking…')
-          : el('span', {}, 'click a card to play it; click a ready minion, then a target, to attack')
+          ? el('span', { class: 'midline-hint' }, 'the Archivist is thinking…')
+          : el('span', { class: 'midline-hint' }, 'tap a card to play it; tap a ready minion, then a target, to attack')
     );
 
     root.replaceChildren(
@@ -476,12 +481,12 @@ export function renderGame(root, ctx) {
             { class: 'my-side' },
             el(
               'div',
-              { style: 'display:flex; align-items:center; gap:14px; padding: 6px 18px 0;' },
+              { class: 'my-hero-row', style: 'display:flex; align-items:center; gap:14px; padding: 6px 18px 0;' },
               heroPlate(session.view, { withPower: true })
             ),
             lane(session.view)
           ),
-          gameLog()
+          showLog ? gameLog() : null
         ),
         handStrip()
       ),
