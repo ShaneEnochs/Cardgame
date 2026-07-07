@@ -4,7 +4,7 @@
 // into the next action.
 
 import { getCard, getHeroPower, hasCard } from './cards.js';
-import { HAND_LIMIT, BOARD_LIMIT, HERO_MAX_HP, makeCardInstance } from './primitives.js';
+import { HAND_LIMIT, BOARD_LIMIT, HERO_MAX_HP, makeCardInstance, verb } from './primitives.js';
 import { seedRng, shuffle } from './rng.js';
 
 export const DECK_SIZE = 30;
@@ -87,7 +87,7 @@ export function createGame(config) {
   const fp = state.players[first];
   fp.maxMana = 1;
   fp.mana = 1;
-  state.log.push({ turn: 1, text: `${fp.name} goes first.` });
+  state.log.push({ turn: 1, text: `${verb(fp.name, 'goes')} first.` });
   return state;
 }
 

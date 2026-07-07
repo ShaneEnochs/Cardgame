@@ -17,7 +17,9 @@ import {
   minionHasKeyword,
   minionRef,
   otherPlayer,
+  poss,
   processDeaths,
+  verb,
 } from './primitives.js';
 import { validateState } from './state.js';
 
@@ -180,12 +182,12 @@ function handlePlayCard(state, action) {
     const m = makeMinion(state, inst.cardId, p.id);
     if (minionHasKeyword(m, 'charge') || minionHasKeyword(m, 'haste')) m.sick = false;
     p.board.push(m);
-    log(state, `${p.name} plays ${card.name}.`);
+    log(state, `${verb(p.name, 'plays')} ${card.name}.`);
     if (def?.battlecry) {
       def.battlecry({ state, player: p.id, opponent: otherPlayer(p.id), self: m, target });
     }
   } else {
-    log(state, `${p.name} casts ${card.name}.`);
+    log(state, `${verb(p.name, 'casts')} ${card.name}.`);
     def.run({ state, player: p.id, opponent: otherPlayer(p.id), target });
   }
   processDeaths(state);
@@ -222,7 +224,7 @@ function handleAttack(state, action) {
   const defender = targetRef.kind === 'minion' ? findMinion(state, targetRef) : null;
   const defenderName = defender ? getCard(defender.cardId).name : state.players[targetRef.player].name;
   const retaliation = defender ? defender.atk : 0;
-  log(state, `${attackerName} attacks ${defenderName}.`);
+  log(state, `${verb(attackerName, 'attacks')} ${defenderName}.`);
 
   // Simultaneous combat damage: both hits land even if the first one kills.
   dealDamage(state, targetRef, attackPower, attackerRef.kind === 'minion' ? attackerRef : null);
@@ -234,7 +236,7 @@ function handleAttack(state, action) {
     p.heroAttacksUsed += 1;
     p.weapon.durability -= 1;
     if (p.weapon.durability <= 0) {
-      log(state, `${p.name}'s ${p.weapon.name} breaks.`);
+      log(state, `${poss(p.name)} ${p.weapon.name} breaks.`);
       p.weapon = null;
     }
   } else {
@@ -268,7 +270,7 @@ function handleHeroPower(state, action) {
 
   p.mana -= power.cost;
   p.heroPowerUsed = true;
-  log(state, `${p.name} uses ${power.name}.`);
+  log(state, `${verb(p.name, 'uses')} ${power.name}.`);
   def.run({ state, player: p.id, opponent: otherPlayer(p.id), target });
   processDeaths(state);
 }
@@ -323,7 +325,7 @@ function startTurn(state, playerId) {
   for (const pid of ['p1', 'p2']) {
     for (const m of state.players[pid].board) m.damagedThisTurn = false;
   }
-  log(state, `— ${p.name}'s turn ${state.turnNumber} —`);
+  log(state, `— ${poss(p.name)} turn ${state.turnNumber} —`);
 
   // Delayed effects (Blade Barrier) fire at the start of their owner's turn.
   const due = state.delayed.filter((d) => d.player === playerId);
@@ -363,10 +365,10 @@ function handleChoose(state, action) {
     if (at !== -1) {
       const [c] = p.deck.splice(at, 1);
       if (p.hand.length >= 10) {
-        log(state, `${p.name}'s hand is full — ${getCard(c.cardId).name} burns away.`);
+        log(state, `${poss(p.name)} hand is full — ${getCard(c.cardId).name} burns away.`);
       } else {
         p.hand.push(c);
-        log(state, `${p.name} draws ${getCard(c.cardId).name}.`);
+        log(state, `${verb(p.name, 'draws')} ${getCard(c.cardId).name}.`);
       }
     }
   }
@@ -383,7 +385,7 @@ function checkWinner(state) {
   else if (p1Dead) state.winner = 'p2';
   else if (p2Dead) state.winner = 'p1';
   if (state.winner) {
-    log(state, state.winner === 'draw' ? 'Both heroes fall — a draw.' : `${state.players[state.winner].name} wins.`);
+    log(state, state.winner === 'draw' ? 'Both heroes fall — a draw.' : `${verb(state.players[state.winner].name, 'wins')}.`);
   }
 }
 
@@ -417,7 +419,7 @@ export function applyAction(prev, action) {
       break;
     case 'concede':
       state.winner = otherPlayer(state.active);
-      log(state, `${state.players[state.active].name} concedes.`);
+      log(state, `${verb(state.players[state.active].name, 'concedes')}.`);
       break;
     default:
       illegal(`unknown action type ${action.type}`);

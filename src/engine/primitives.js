@@ -41,6 +41,22 @@ export function log(state, text) {
   if (state.log.length > 250) state.log.shift();
 }
 
+/* Log grammar for the second-person player name ("You"): "You play" not
+ * "You plays", "Your hand" not "You's hand". */
+const BASE_VERBS = {
+  plays: 'play', casts: 'cast', uses: 'use', draws: 'draw', discards: 'discard',
+  wins: 'win', concedes: 'concede', goes: 'go', pockets: 'pocket',
+  equips: 'equip', glimpses: 'glimpse', sees: 'see', peers: 'peer', attacks: 'attack',
+};
+
+export function verb(name, v) {
+  return name === 'You' ? `You ${BASE_VERBS[v] ?? v}` : `${name} ${v}`;
+}
+
+export function poss(name) {
+  return name === 'You' ? 'Your' : `${name}'s`;
+}
+
 /* ---------------- instance construction ---------------- */
 
 export function newUid(state, prefix) {
@@ -239,13 +255,13 @@ export function drawCard(state, playerId, count = 1) {
   for (let i = 0; i < count; i++) {
     if (p.deck.length === 0) {
       p.fatigue += 1;
-      log(state, `${p.name} draws from an empty deck — ${p.fatigue} fatigue damage.`);
+      log(state, `${verb(p.name, 'draws')} from an empty deck — ${p.fatigue} fatigue damage.`);
       dealDamage(state, heroRef(playerId), p.fatigue);
       continue;
     }
     const c = p.deck.pop();
     if (p.hand.length >= HAND_LIMIT) {
-      log(state, `${p.name}'s hand is full — ${getCard(c.cardId).name} burns away.`);
+      log(state, `${poss(p.name)} hand is full — ${getCard(c.cardId).name} burns away.`);
       continue;
     }
     p.hand.push(c);
@@ -256,7 +272,7 @@ export function drawCard(state, playerId, count = 1) {
 export function addToHand(state, playerId, cardId) {
   const p = state.players[playerId];
   if (p.hand.length >= HAND_LIMIT) {
-    log(state, `${p.name}'s hand is full — ${getCard(cardId).name} burns away.`);
+    log(state, `${poss(p.name)} hand is full — ${getCard(cardId).name} burns away.`);
     return null;
   }
   const inst = makeCardInstance(state, cardId);
@@ -269,7 +285,7 @@ export function discardRandom(state, playerId) {
   if (p.hand.length === 0) return null;
   const idx = randInt(state, p.hand.length);
   const [c] = p.hand.splice(idx, 1);
-  log(state, `${p.name} discards ${getCard(c.cardId).name}.`);
+  log(state, `${verb(p.name, 'discards')} ${getCard(c.cardId).name}.`);
   return c;
 }
 
@@ -280,7 +296,7 @@ export function discardLowestCost(state, playerId) {
   const candidates = p.hand.filter((c) => getCard(c.cardId).cost === lowest);
   const c = pick(state, candidates);
   p.hand.splice(p.hand.indexOf(c), 1);
-  log(state, `${p.name} discards ${getCard(c.cardId).name}.`);
+  log(state, `${verb(p.name, 'discards')} ${getCard(c.cardId).name}.`);
   return c;
 }
 
@@ -292,14 +308,14 @@ export function bounceToHand(state, ref, { costDelta = 0 } = {}) {
   board.splice(board.indexOf(m), 1);
   const p = state.players[m.controller];
   if (p.hand.length >= HAND_LIMIT) {
-    log(state, `${p.name}'s hand is full — ${getCard(m.cardId).name} is destroyed instead.`);
+    log(state, `${poss(p.name)} hand is full — ${getCard(m.cardId).name} is destroyed instead.`);
     state.players[m.controller].graveyard.push(m.cardId);
     return;
   }
   const inst = makeCardInstance(state, m.cardId);
   inst.costDelta = costDelta;
   p.hand.push(inst);
-  log(state, `${getCard(m.cardId).name} returns to ${p.name}'s hand.`);
+  log(state, `${getCard(m.cardId).name} returns to ${poss(p.name)} hand.`);
 }
 
 /* ---------------- stat changes / status ---------------- */
@@ -381,7 +397,7 @@ export function takeControl(state, ref, newController, { untilEndOfTurn = false 
   if (!m || m.controller === newController) return false;
   const to = state.players[newController].board;
   if (to.length >= BOARD_LIMIT) {
-    log(state, `${state.players[newController].name}'s board is full — control doesn't change.`);
+    log(state, `${poss(state.players[newController].name)} board is full — control doesn't change.`);
     return false;
   }
   const from = state.players[m.controller].board;

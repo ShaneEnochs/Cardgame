@@ -48,7 +48,7 @@ function scry(state, playerId, n) {
   const p = state.players[playerId];
   const top = p.deck.slice(-n).reverse(); // last element of deck = top
   if (top.length === 0) {
-    P.log(state, `${p.name} peers at an empty deck.`);
+    P.log(state, `${P.verb(p.name, 'peers')} at an empty deck.`);
     return;
   }
   state.pendingChoice = {
@@ -64,7 +64,7 @@ function castRandomSpellFromDeck(state, playerId) {
   const p = state.players[playerId];
   const spells = p.deck.filter((c) => getCard(c.cardId).type === 'spell');
   if (spells.length === 0) {
-    P.log(state, `${p.name}'s deck holds no spells.`);
+    P.log(state, `${P.poss(p.name)} deck holds no spells.`);
     return;
   }
   const inst = pick(state, spells);
@@ -81,7 +81,7 @@ function castRandomSpellFromDeck(state, playerId) {
     }
     target = pick(state, candidates);
   }
-  P.log(state, `${card.name} is cast from ${p.name}'s deck.`);
+  P.log(state, `${card.name} is cast from ${P.poss(p.name)} deck.`);
   def.run({ state, player: playerId, opponent: P.otherPlayer(playerId), target });
 }
 
@@ -326,7 +326,7 @@ defineCard('death_knight', {
   aiHint: 'none',
   battlecry({ state, player }) {
     state.players[player].weapon = { name: 'Soul Blade', atk: 3, durability: 2 };
-    P.log(state, `${state.players[player].name} equips a Soul Blade (3/2).`);
+    P.log(state, `${P.verb(state.players[player].name, 'equips')} a Soul Blade (3/2).`);
   },
 });
 defineCard('revenant', drReturnToHand());
@@ -547,7 +547,7 @@ defineCard('nymph', {
 defineCard('leprechaun', {
   deathrattle({ state, controller }) {
     state.players[controller].coinsEarned += 20;
-    P.log(state, `${state.players[controller].name} pockets 20 coins.`);
+    P.log(state, `${P.verb(state.players[controller].name, 'pockets')} 20 coins.`);
     P.addToHand(state, controller, 'wish');
   },
 });
@@ -642,11 +642,11 @@ defineCard('intellect_devourer', {
   battlecry({ state, player, opponent }) {
     const hand = state.players[opponent].hand;
     if (hand.length === 0) {
-      P.log(state, `${state.players[opponent].name}'s hand is empty.`);
+      P.log(state, `${P.poss(state.players[opponent].name)} hand is empty.`);
       return;
     }
     const c = pick(state, hand);
-    P.log(state, `${state.players[player].name} glimpses ${getCard(c.cardId).name} in ${state.players[opponent].name}'s hand.`);
+    P.log(state, `${P.verb(state.players[player].name, 'glimpses')} ${getCard(c.cardId).name} in ${P.poss(state.players[opponent].name)} hand.`);
   },
 });
 defineCard('aboleth', {
@@ -691,11 +691,11 @@ defineCard('nothic', {
   battlecry({ state, player, opponent }) {
     const deck = state.players[opponent].deck;
     if (deck.length === 0) {
-      P.log(state, `${state.players[opponent].name}'s deck is empty.`);
+      P.log(state, `${P.poss(state.players[opponent].name)} deck is empty.`);
       return;
     }
     const top = deck[deck.length - 1];
-    P.log(state, `${state.players[player].name} sees ${getCard(top.cardId).name} on top of ${state.players[opponent].name}'s deck.`);
+    P.log(state, `${P.verb(state.players[player].name, 'sees')} ${getCard(top.cardId).name} on top of ${P.poss(state.players[opponent].name)} deck.`);
   },
 });
 defineCard('mind_witness', bcAoE(({ state, player, self }) => {

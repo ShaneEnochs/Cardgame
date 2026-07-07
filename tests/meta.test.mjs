@@ -85,12 +85,13 @@ test('game results pay out coins and track stats', () => {
   const start = p.coins;
   const w = applyGameResult(p, { mode: 'ai', outcome: 'win' });
   const l = applyGameResult(p, { mode: 'ai', outcome: 'loss', bonusCoins: 20 });
-  const h = applyGameResult(p, { mode: 'hotseat', outcome: 'win' });
+  const h = applyGameResult(p, { mode: 'hotseat', outcome: 'shared' });
   assert.equal(w, 60);
   assert.equal(l, 40); // 20 loss + 20 leprechaun bonus
   assert.equal(h, 30);
   assert.equal(p.coins, start + 130);
-  assert.deepEqual(p.stats, { wins: 2, losses: 1, draws: 0, games: 3 });
+  // Hot-seat counts as a game but not toward the personal W/L record.
+  assert.deepEqual(p.stats, { wins: 1, losses: 1, draws: 0, games: 3 });
 });
 
 test('all prebuilt AI decks are legal', () => {

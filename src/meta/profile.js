@@ -141,16 +141,18 @@ export function deleteDeck(profile, deckId) {
  */
 export function applyGameResult(profile, { mode, outcome, bonusCoins = 0 }) {
   let earned = bonusCoins;
+  profile.stats.games += 1;
   if (mode === 'hotseat') {
+    // Both seats share this profile, so hot-seat pays a flat reward and
+    // doesn't touch the personal win/loss record.
     earned += REWARDS.hotseat;
   } else {
     earned += outcome === 'win' ? REWARDS.aiWin : REWARDS.aiLoss;
+    if (outcome === 'win') profile.stats.wins += 1;
+    else if (outcome === 'loss') profile.stats.losses += 1;
+    else profile.stats.draws += 1;
   }
   profile.coins += earned;
-  profile.stats.games += 1;
-  if (outcome === 'win') profile.stats.wins += 1;
-  else if (outcome === 'loss') profile.stats.losses += 1;
-  else profile.stats.draws += 1;
   return earned;
 }
 
